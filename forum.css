@@ -1,0 +1,19 @@
+.page {
+    width: 100%;
+}
+
+
+.sortMenu {
+    width: 40%;
+    align-items: center;
+    padding: 20px;
+}
+
+.post {
+    width: 60%;
+    align-items: center;
+    background-color: rgb(117, 115, 115);
+    margin-bottom: 20px;
+    padding: 20px;
+    box-shadow: 0px 0px 13px -3px #777;
+}
