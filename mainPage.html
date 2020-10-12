@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+      body{
+        background: #f2f2f2;
+        font-family: 'Open Sans', sans-serif;
+      }
+
+      .search {
+        width: 200%;
+        position: absolute;
+        display: flex;
+      }
+
+      .searchTerm {
+        width: 100%;
+        border: 3px solid black;
+        border-right: none;
+        padding: 5px;
+        height: 40px;
+        border-radius: 5px 0 0 5px;
+        outline: none;
+        color: #9DBFAF;
+        font-size: 20px;
+      }
+
+      .searchTerm:focus{
+        color: black;
+        font-size: 20px;
+      }
+
+      .searchButton {
+        width: 80px;
+        height: 56px;
+        border: 1px solid black;
+        background: black;
+        text-align: center;
+        color: #fff;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+        font-size: 20px;
+      }
+
+      /*Resize the wrap to see the search bar change!*/
+      .wrap{
+        width: 30%;
+        position: absolute;
+        top: 8%;
+        left: 20%;
+        transform: translate(-50%, -50%);
+      }
+
+      .floatLeft {
+        width: 50%;
+        position: absolute;
+        float: left;
+        top: 20%;
+        left: 5%;
+      }
+      .floatMidle {
+        width: 50%;
+        position: absolute;
+        float: right;
+        top: 20%;
+        left: 32%;
+      }
+      .floatRight {
+        width: 50%;
+        position: absolute;
+        float: right;
+        top: 20%;
+        left: 56%;
+      }
+      .container { overflow: hidden; }
+    </style>
+</head>
+
+<nav class="w3-bar w3-black">
+    <a href="#menu" class="w3-button w3-bar-item">Menu</a>
+    <a href="#movies" class="w3-button w3-bar-item">Movies</a>
+    <a href="#genre" class="w3-button w3-bar-item">Genre</a>
+    <a href="#favorites" class="w3-button w3-bar-item">Favorites</a>
+</nav>
+<br>
+
+<div class="wrap">
+   <div class="search">
+      <input type="text" class="searchTerm" placeholder="Search for Movies">
+      <button type="submit" class="searchButton">
+        <i class="fa fa-search"></i>
+     </button>
+   </div>
+</div>
+
+<div class="container">
+<div class="floatLeft">
+<tr>
+  <table BORDER="1" CELLPADDING="20">
+    <tr>
+      <th> <h3>Movie Suggestions</h3></th>
+        <tr>
+          <td class="box3_b">Movie 1</td>
+          <td class="box3_b">Brief Description</td>
+        </tr>
+        <tr>
+          <td class="box3_b">Movie 2</td>
+          <td class="box3_b">Brief Description</td>
+        </tr>
+        <tr>
+          <td class="box3_b">Movie 3</td>
+          <td class="box3_b">Brief Description</td>
+        </tr>
+        <tr>
+          <td class="box3_b">Movie 4</td>
+          <td class="box3_b">Brief Description</td>
+        </tr>
+    </tr>
+  </table>
+</div>
+
+<div class="floatMidle">
+<tr>
+  <table BORDER="1" CELLPADDING="20">
+      <tr>
+        <th><h3>Forum Topics</h3></th>
+          <tr>
+            <td class="box4_b">Topic 1</td>
+            <td class="box4_b">Brief Description</td>
+          </tr>
+          <tr>
+            <td class="box4_b">Topic 2</td>
+            <td class="box4_b">Brief Description</td>
+          </tr>
+          <tr>
+            <td class="box4_b">Topic 3</td>
+            <td class="box4_b">Brief Description</td>
+          </tr>
+          <tr>
+            <td class="box4_b">Topic 4</td>
+            <td class="box4_b">Brief Description</td>
+          </tr>
+      </tr>
+    </table>
+  </div>
+
+  <div class="floatRight">
+  <tr>
+    <table BORDER="1" CELLPADDING="80">
+      <tr>
+        <td class="box3_t"> Movie of The Week
+          <tr>
+            <td class="box3_b">Description...</td>
+          </tr>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+</body>
+</html>
