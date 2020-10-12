@@ -2,4 +2,4 @@
 
 This is a test commit.
 
-Another test.
+Another test.   
