@@ -83,16 +83,14 @@
 
 <nav class="w3-bar w3-black">
     <a href="#menu" class="w3-button w3-bar-item">Menu</a>
-    <a href="#movies" class="w3-button w3-bar-item">Movies</a>
-    <a href="#genre" class="w3-button w3-bar-item">Genre</a>
-    <a href="#favorites" class="w3-button w3-bar-item">Favorites</a>
+    <a href="favorites.html" class="w3-button w3-bar-item">Favorites</a>
 </nav>
 <br>
 
 <div class="wrap">
    <div class="search">
       <input type="text" class="searchTerm" placeholder="Search for Movies">
-      <button type="submit" class="searchButton">
+      <button onclick="location.href='searchPage.html'" type="submit" class="searchButton">
         <i class="fa fa-search"></i>
      </button>
    </div>
@@ -105,7 +103,7 @@
     <tr>
       <th> <h3>Movie Suggestions</h3></th>
         <tr>
-          <td class="box3_b">Movie 1</td>
+          <td class="box3_b"><a href="detail.html">Good Will Hunting</a></td>
           <td class="box3_b">Brief Description</td>
         </tr>
         <tr>
@@ -128,9 +126,9 @@
 <tr>
   <table BORDER="1" CELLPADDING="20">
       <tr>
-        <th><h3>Forum Topics</h3></th>
+        <th><h3><a href="forum.html">Discussion Topics<a></h3></th>
           <tr>
-            <td class="box4_b">Topic 1</td>
+            <td class="box4_b"><a href="post.html">New Movie Release</a></td>
             <td class="box4_b">Brief Description</td>
           </tr>
           <tr>
@@ -153,8 +151,7 @@
   <tr>
     <table BORDER="1" CELLPADDING="80">
       <tr>
-        <td class="box3_t"> Movie of The Week
-          <tr>
+        <td class="box3_t"> <a href="detail.html">Movie of The Week</a><tr>
             <td class="box3_b">Description...</td>
           </tr>
         </td>
