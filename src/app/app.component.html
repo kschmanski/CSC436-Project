@@ -1,4 +1,12 @@
-
+<ul class="dropdown-menu" role="menu">
+  Dropdown
+  <li>
+    <a href="#">Sub List 1</a>
+  </li>
+  <li>
+    <a href="#">Sub List 2</a>
+  </li>
+</ul>
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark fixed-top">
   <ul class="navbar-nav">
 
@@ -9,9 +17,9 @@
 
 
 
+
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="hrefDropdown" role="button" data-toggle="dropdown"
-         aria-haspopup="true" aria-expanded="false">
+      <a class="nav-link dropdown-toggle" href="#" id="hrefDropdown" role="button" data-toggle="dropdown">
         Dropdown 1
       </a>
       <div class="dropdown-menu" aria-labelledby="hrefDropdown">
@@ -22,8 +30,7 @@
 
 
     <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="routerLinkDropdown" role="button" data-toggle="dropdown"
-         aria-haspopup="true" aria-expanded="false">
+      <a class="nav-link dropdown-toggle" href="#" id="routerLinkDropdown" role="button">
         Dropdown 2
       </a>
       <div class="dropdown-menu" aria-labelledby="routerLinkDropdown">
@@ -31,8 +38,34 @@
       </div>
     </li>
 
+    <a class="nav-link dropdown-toggle" href="/movie-detail">
+      Dropdown</a>
+
+
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
+        <div class="dropdown-menu">
+          <a class="dropdown-item" href="google.com">Link 1</a>
+          <a class="dropdown-item" href="/movie-detail">Link 2</a>
+          <a class="dropdown-item" href="#">Link 3</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+
 
   </ul>
 </nav>
-
+<br />
+<br />
+<br />
 <router-outlet></router-outlet>
