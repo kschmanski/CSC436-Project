@@ -1,21 +1,11 @@
-<ul class="dropdown-menu" role="menu">
-  Dropdown
-  <li>
-    <a href="#">Sub List 1</a>
-  </li>
-  <li>
-    <a href="#">Sub List 2</a>
-  </li>
-</ul>
+
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark fixed-top">
   <ul class="navbar-nav">
 
     <!-- maybe we could add a link to the home page here? -->
     <div class = "navbar-header">
-      <a class = "navbar-brand" href = "https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=CSC&CatalogNbr=436" target="_blank">CSC 436</a>
+      <a class = "navbar-brand" href = "https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=CSC&CatalogNbr=436" target="_blank">CDM Page</a>
     </div>
-
-
 
 
     <li class="nav-item dropdown">
@@ -23,43 +13,19 @@
         Dropdown 1
       </a>
       <div class="dropdown-menu" aria-labelledby="hrefDropdown">
-       <!-- <a class="dropdown-item" href="movie-detail">Movie Detail</a> -->
+       <a class="dropdown-item" href="movie-detail">Movie Detail</a>
         <a class="dropdown-item" href="todo">Todo</a>
       </div>
     </li>
 
-
-    <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="routerLinkDropdown" role="button">
-        Dropdown 2
-      </a>
-      <div class="dropdown-menu" aria-labelledby="routerLinkDropdown">
-        <!-- <a class="dropdown-item" [routerLink]="['/movie-detail']">Movie Detail</a> -->
-      </div>
-    </li>
-
-    <a class="nav-link dropdown-toggle" href="/movie-detail">
-      Dropdown</a>
-
-
+<!-- another way to do a dropdown -->
     <ul class="nav nav-pills">
-      <li class="nav-item">
-        <a class="nav-link active" href="#">Active</a>
-      </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown</a>
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown 2</a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="google.com">Link 1</a>
-          <a class="dropdown-item" href="/movie-detail">Link 2</a>
-          <a class="dropdown-item" href="#">Link 3</a>
+          <a class="dropdown-item" href="/movie-detail">Movie Detail</a>
+          <a class="dropdown-item" href="todo">Todo</a>
         </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
     </ul>
 
 
