@@ -7,11 +7,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import {FormsModule} from "@angular/forms";
 import { MovieSearchComponent } from './movie-search/movie-search.component';
+import { ForumPageComponent } from './forum-page/forum-page.component';
 
 const routes: Routes = [
   {path: 'movie-detail', component:MovieDetailComponent},
   {path: 'todo', component:TodoListComponent},
   {path: 'search-movie', component: MovieSearchComponent}
+  {path: 'forum', component:ForumPageComponent}
 ];
 
 @NgModule({
@@ -20,6 +22,7 @@ const routes: Routes = [
     MovieDetailComponent,
     TodoListComponent,
     MovieSearchComponent
+    ForumPageComponent
   ],
   imports: [
     BrowserModule,
