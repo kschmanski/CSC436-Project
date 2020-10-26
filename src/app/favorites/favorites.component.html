@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html lang ="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>My Favorites</title>
+</head>
+
+<!--Include a search bar component here?-->
+
+
+<body class="container body-content">
+
+    <h2 style="text-align: center">
+        My Favorites
+        <!--Or include a search bar here?
+        <form class="form-inline" style='width: 800px'>
+          <i class="fas fa-search" aria-hidden="true"></i>
+          <input class="form-control form-control-lg w-75" type="text" placeholder="Search for a Movie"
+            aria-label="Search">
+          <button type="button" class="btn btn-primary ml-3 btn-lg">Search</button>
+        </form>-->
+    </h2>
+
+    <!--All of this is hard coded but will eventually be dependent on data from RapidAPI-->
+    <div class="container">
+        <!--Marvel Movies are easy-->
+        <div class="card-deck">
+            <div class="card">
+               <img class="card-img-top" src="https://images-na.ssl-images-amazon.com/images/I/61hjGu56QLL._AC_SY741_.jpg" alt="Card image cap">
+               <div class="card-body">
+                <h5 class="card-title">
+                    <a href="favorites/#CATWS" class="movie_page">Captain America: The Winter Soldier (2014)</a>
+                </h5>
+                <p class="card-text">
+                    Starring:
+                    <a href="favorites/#ChrisEvans" class="actor_page">Chris Evans</a>,
+                    <a href="favorites/#SebastianStan" class="actor_page">Sebastian Stan</a>, 
+                    <a href="favorites/#AnthonyMackie" class="actor_page">Anthony Mackie</a>, 
+                    <a href="favorites/#ScarlettJoansson" class="actor_page">Scarlett Johansson </a>  
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="favorites/#remove" class="card-link">
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+                </a>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="http://www.impawards.com/2018/posters/black_panther.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">
+                    <a href="favorites/#TBP" class="movie_page">The Black Panther (2018)</a>
+                </h5>
+                <p class="card-text">
+                    Starring:
+                    <a href="favorites/#ChadwickBoseman" class="actor_page">Chadwick Boseman</a>,
+                    <a href="favorites/#MichaelBJordan" class="actor_page">Michael B. Jordan</a>,
+                    <a href="favorites/#LeticiaWright" class="actor_page">Leticia Wright</a>,
+                    <a href="favorites/#DanaiGugira" class="actor_page">Danai Gurira</a>
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="favorites/#remove" class="card-link">
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+                </a>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="https://images.squarespace-cdn.com/content/v1/5cef27a3fc18050001a32bce/1559240876511-VIYUY0CORDXUW5HLY16L/ke17ZwdGBToddI8pDm48kEXmIAFfm-jEVAMn4PATRvQUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8GRo6ASst2s6pLvNAu_PZdJ0ML4pw1z1eBGIdjEc5vkUeANcTMJ2ztEcjDWCkbcibujMCoaEo2hhEIDboHxA99w/spiredman+homecoming.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">
+                    <a href="#SH" class="movie_page">Spider-Man: Homecoming (2017)</a>
+                </h5>
+                <p class="card-text">
+                    Starring:
+                    <a href="favorites/#TomHolland" class="actor_page">Tom Holland</a>,
+                    <a href="favorites/#Zendaya" class="actor_page">Zendaya</a>,
+                    <a href="favorites/#MichaelKeaton" class="actor_page">Michael Keaton</a>,
+                    <a href="favorites/#RDJ" class="actor_page">Robert Downey Jr.</a>
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="favorites/#remove" class="card-link">
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+                </a>
+              </div>
+            </div>
+            
+            
+          </div>
+
+        
+        <div class="card-deck">
+
+            <!--Links to Movie-Details page-->
+            <div class="card">
+               <img class="card-img-top" src="https://cdn.shopify.com/s/files/1/0969/9128/products/Good_Will_Hunting_-_Robin_Williams_Matt_Damon_-_Hollywood_Movie_Poster_4b587e29-57aa-4040-a557-554389827c8e.jpg?v=1552730295" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">
+                    <a href="./movie-detail" class="movie_page">Good Will Hunting (1993)</a>
+                </h5>
+                <p class="card-text">
+                    Starring:                    
+                    <a href="favorites/#MattDamon" class="actor_page">Matt Damon</a>,
+                    <a href="favorites/#BenAffleck" class="actor_page">Ben Afleck</a>,
+                    <a href="favorites/#RobinWilliams" class="actor_page">Robin Williams</a>    
+                </p>
+              </div>
+
+              <!--Good movie. Hits the feels-->
+              <div class="card-footer">
+                <a href="favorites/#remove" class="card-link">
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+                </a>
+              </div>
+            </div>
+            <div class="card">
+              <img class="card-img-top" src="https://m.media-amazon.com/images/M/MV5BMTkwOTQ4OTg0OV5BMl5BanBnXkFtZTgwMzQyOTM0OTE@._V1_.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">
+                    <a href="favorites/#TrainToBusan" class="movie_page">Train to Busan (2016)</a>
+                </h5>
+                <p class="card-text">
+                    Starring:
+                    <a href="favorites/#GongYoo" class="actor_page">Gong Yoo</a>,
+                    <a href="favorites/#MaDongSeok" class="actor_page">Ma Dong-Seok</a>,
+                    <a href="favorites/#JungYuMi" class="actor_page">Jung Yu-Mi</a>,
+                    <a href="favorites/#KimSuAn" class="actor_page">Kim Su-An</a>
+                </p>
+              </div>
+              <div class="card-footer">
+                <a href="favorites/#remove" class="card-link">
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+                </a>
+              </div>
+            </div>
+
+            <!--I only chose this because of that one aesthetic song. I haven't actually watched it-->
+            <div class="card">
+              <img class="card-img-top" src="https://www.pinkvilla.com/files/styles/ld-image/public/BM_New_Poster_1.jpg" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">
+                    <a href="favorites/#BajiraoMastani">Bajirao Mastani (2015)</a>
+                </h5>
+                <p class="card-text">
+                    Starring:
+                    <a href="favorites/#RanveerSingh" class="actor_page">Ranveer Singh</a>,
+                    <a href="favorites/#DeepikaPadukone" class="actor_page">Deepika Padukone</a>,
+                    <a href="favorites/#PriyankaChopra" class="actor_page">Priyanka Chopra</a>
+                </p>
+              </div>
+              
+              <div class="card-footer">
+                <a href="favorites/#remove" class="card-link">
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+                </a>
+              </div>
+            </div>
+            
+            
+          </div>
+
+
+    </div>
+</body>
+
+
+
+</html>
+
