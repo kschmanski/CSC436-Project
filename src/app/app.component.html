@@ -4,22 +4,27 @@
 
     <!-- maybe we could add a link to the home page here? -->
     <div class = "navbar-header">
-      <a class = "navbar-brand" href = "https://www.cdm.depaul.edu/academics/pages/courseinfo.aspx?Subject=CSC&CatalogNbr=436" target="_blank">CDM Page</a>
+      <!--    Opens HomePage in new tab
+        <a class = "navbar-brand" href='' target="_blank">Movie App</a> 
+      -->
+      <a class="navbar-brand" href=''>Movie App</a>
     </div>
 
     
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="hrefDropdown" role="button" data-toggle="dropdown">
-        Dropdown 1
+        Menu
       </a>
       <div class="dropdown-menu" aria-labelledby="hrefDropdown">
+       <a class="dropdown-item" href="search-movie">Search Movie</a>
        <a class="dropdown-item" href="movie-detail">Movie Detail</a>
        <a class="dropdown-item" [routerLink]="['/forum']">Forum</a>
+       <a class="dropdown-item" href="favorites">Favorites</a>
         <a class="dropdown-item" href="todo">Todo</a>
       </div>
     </li>
 
-<!-- another way to do a dropdown -->
+<!-- another way to do a dropdown 
     <ul class="nav nav-pills">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown 2</a>
@@ -28,15 +33,16 @@
           <a class="dropdown-item" href="todo">Todo</a>
         </div>
     </ul>
-
-    <a class="nav-link" href="search-movie">
-      Search Movie
-    </a>
+-->
+    <a class="nav-link" href="search-movie">Search Movie</a>
     <a class="nav-item nav-link" [routerLink]="['/forum']">Forum</a>
+    <a class="nav-link" href="favorites">Favorites</a>
 
   </ul>
 </nav>
 <br />
 <br />
 <br />
+
+<!--<app-home></app-home>-->
 <router-outlet></router-outlet>
