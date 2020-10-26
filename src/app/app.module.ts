@@ -12,7 +12,7 @@ import { ForumPageComponent } from './forum-page/forum-page.component';
 const routes: Routes = [
   {path: 'movie-detail', component:MovieDetailComponent},
   {path: 'todo', component:TodoListComponent},
-  {path: 'search-movie', component: MovieSearchComponent}
+  {path: 'search-movie', component: MovieSearchComponent},
   {path: 'forum', component:ForumPageComponent}
 ];
 
@@ -21,7 +21,7 @@ const routes: Routes = [
     AppComponent,
     MovieDetailComponent,
     TodoListComponent,
-    MovieSearchComponent
+    MovieSearchComponent,
     ForumPageComponent
   ],
   imports: [
