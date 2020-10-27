@@ -13,7 +13,6 @@ import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {path: 'movie-detail', component: MovieDetailComponent},
-  {path: 'todo', component: TodoListComponent},
   {path: 'search-movie', component: MovieSearchComponent},
   {path: 'forum', component: ForumPageComponent},
   {path: 'favorites', component: FavoritesComponent},
