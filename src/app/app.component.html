@@ -7,36 +7,27 @@
       <!--    Opens HomePage in new tab
         <a class = "navbar-brand" href='' target="_blank">Movie App</a> 
       -->
-      <a class="navbar-brand" href=''>Movie App</a>
+      <a class="navbar-brand" [routerLink]="['/home']">Movie App</a>
     </div>
 
     
-    <li class="nav-item dropdown">
+    <!-- <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle" href="#" id="hrefDropdown" role="button" data-toggle="dropdown">
         Menu
       </a>
       <div class="dropdown-menu" aria-labelledby="hrefDropdown">
        <a class="dropdown-item" href="search-movie">Search Movie</a>
-       <a class="dropdown-item" href="movie-detail">Movie Detail</a>
+       <a class="dropdown-item" [routerLink]="['/movie-detail']">Movie Detail</a>
        <a class="dropdown-item" [routerLink]="['/forum']">Forum</a>
        <a class="dropdown-item" href="favorites">Favorites</a>
         <a class="dropdown-item" href="todo">Todo</a>
       </div>
-    </li>
+    </li> -->
 
-<!-- another way to do a dropdown 
-    <ul class="nav nav-pills">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Dropdown 2</a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" href="/movie-detail">Movie Detail</a>
-          <a class="dropdown-item" href="todo">Todo</a>
-        </div>
-    </ul>
--->
-    <a class="nav-link" href="search-movie">Search Movie</a>
+    <a class="nav-link" [routerLink]="['/search-movie']">Search Movie</a>
+    <a class="nav-link" [routerLink]="['/movie-detail']">Movie Detail</a>
     <a class="nav-item nav-link" [routerLink]="['/forum']">Forum</a>
-    <a class="nav-link" href="favorites">Favorites</a>
+    <a class="nav-link" [routerLink]="['/favorites']">Favorites</a>
 
   </ul>
 </nav>
