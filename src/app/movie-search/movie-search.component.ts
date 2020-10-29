@@ -43,12 +43,13 @@ export class MovieSearchComponent implements OnInit {
 
 }
 
+var api_key = "430ac435";
+var api_title = "good";
 
 var settings2 = {
   "async": true,
   "crossDomain": true,
-  //"url": "http://www.omdbapi.com/?apikey=[yourkey]&t=good&plot=full",
-  "url": "http://www.omdbapi.com/?i=tt3896198&apikey=430ac435&t=good&plot=full",
+  "url": "http://www.omdbapi.com/?apikey=" + api_key + "&t=" + api_title + "&plot=full",
   "method": "GET",
 }
 
