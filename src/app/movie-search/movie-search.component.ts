@@ -28,9 +28,8 @@ export class MovieSearchComponent implements OnInit {
   }
   onSubmit(form): void {
     console.log(form.value);
-    this.http.get<any>('https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=Avengers%20Endgame').subscribe(data => {
-      //console.log(data);
-      console.log('here!');
+    this.http.get<any>('https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=Avengers%20Endgame', settings).subscribe(data => {
+      console.log(data);
     });
   }
 
