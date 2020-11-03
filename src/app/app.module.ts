@@ -10,6 +10,7 @@ import { MovieSearchComponent } from './movie-search/movie-search.component';
 import { ForumPageComponent } from './forum-page/forum-page.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { HomeComponent } from './home/home.component';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Routes = [
   {path: 'movie-detail', component: MovieDetailComponent},
@@ -28,12 +29,13 @@ const routes: Routes = [
     MovieSearchComponent,
     ForumPageComponent,
     FavoritesComponent,
-    HomeComponent
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

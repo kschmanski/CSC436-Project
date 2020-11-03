@@ -31,8 +31,8 @@
     <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
     <div style="margin:12px 12px 12px 12px">
         <h2 style="display:inline">Search: </h2>
-        <input class="form-control" name ="input" style="width:auto; display: inline;"/>
-        <button class="btn btn-success form-control" style="width:auto;">Search!</button>
+        <input class="form-control" [(ngModel)]="model.searchQueryFromUser" name ="searchQueryFromUser" style="width:auto; display: inline;">
+      <button class="btn btn-success form-control" style="width:auto;">Search!</button>
     </div>
     <h2 style="margin:12px 12px 12px 12px">Results:</h2>
 
