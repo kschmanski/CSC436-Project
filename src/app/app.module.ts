@@ -11,7 +11,6 @@ import { ForumPageComponent } from './forum-page/forum-page.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ConfigComponent } from './config/config.component';
 
 const routes: Routes = [
   {path: 'movie-detail', component: MovieDetailComponent},
@@ -31,7 +30,6 @@ const routes: Routes = [
     ForumPageComponent,
     FavoritesComponent,
     HomeComponent,
-    ConfigComponent
   ],
   imports: [
     BrowserModule,
