@@ -33,7 +33,7 @@ export class SearchQuery {
 export class MovieSearchComponent implements OnInit {
 
   /**
-   * Returns the API query to call, based on the movie query string supplied by the user.
+   * Returns the API query string to call, based on the movie query string supplied by the user.
    *
    * @param settings
    * @param movie_title_to_search
@@ -50,41 +50,28 @@ export class MovieSearchComponent implements OnInit {
   model = new SearchQuery();
 
   onSubmit(f: NgForm): void {
-
-    console.log(f.value.searchQueryFromUser);
-
-    console.log(this.getApiStringForMovie(settings2, f.value.searchQueryFromUser));
-
-    var apiStringToQuery = this.getApiStringForMovie(settings2, f.value.searchQueryFromUser);
-
-    this.http.get<any>(apiStringToQuery, settings2).subscribe(data => {
-        console.log(data);
-      })
+    var apiStringToQuery = this.getApiStringForMovie(api_settings, f.value.searchQueryFromUser);
 
     // @ts-ignore
-    //this.http.get<any>(settings2.url, settings2).subscribe(data => {
-    //  console.log(data);
-    //})
-
+    this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
+        console.log(api_data);
+      })
   }
-
-
 
 }
 
 var api_key = "430ac435";
 var api_title = "good";
 
-var settings2 = {
+var api_settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://www.omdbapi.com/?apikey=" + api_key + "&t=" + api_title + "&plot=full",
+  "url": "http://www.omdbapi.com/?apikey=" + api_key + "&t=" + api_title + "&plot=full", //not currently used but leaving it here for documentation
   "url_without_movie_title": "http://www.omdbapi.com/?apikey=" + api_key + "&t=",
-  // + api_title + "&plot=full"
   "method": "GET",
 }
 
-var settings = {
+var settings_old = {
   "async": true,
   "crossDomain": true,
   //"url": "https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=Avengers%20Endgame",
