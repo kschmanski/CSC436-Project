@@ -32,6 +32,16 @@ export class SearchQuery {
 
 export class MovieSearchComponent implements OnInit {
 
+  /**
+   * Returns the API query to call, based on the movie query string supplied by the user.
+   *
+   * @param settings
+   * @param movie_title_to_search
+   */
+  getApiStringForMovie(settings, movie_title_to_search : string) {
+    return settings.url_without_movie_title + movie_title_to_search + "&plot=full";
+  }
+
   constructor(private http: HttpClient) { }
 
   ngOnInit() {
@@ -42,11 +52,19 @@ export class MovieSearchComponent implements OnInit {
   onSubmit(f: NgForm): void {
 
     console.log(f.value.searchQueryFromUser);
-    
+
+    console.log(this.getApiStringForMovie(settings2, f.value.searchQueryFromUser));
+
+    var apiStringToQuery = this.getApiStringForMovie(settings2, f.value.searchQueryFromUser);
+
+    this.http.get<any>(apiStringToQuery, settings2).subscribe(data => {
+        console.log(data);
+      })
+
     // @ts-ignore
-    this.http.get<any>(settings2.url, settings2).subscribe(data => {
-      console.log(data);
-    })
+    //this.http.get<any>(settings2.url, settings2).subscribe(data => {
+    //  console.log(data);
+    //})
 
   }
 
@@ -61,6 +79,8 @@ var settings2 = {
   "async": true,
   "crossDomain": true,
   "url": "http://www.omdbapi.com/?apikey=" + api_key + "&t=" + api_title + "&plot=full",
+  "url_without_movie_title": "http://www.omdbapi.com/?apikey=" + api_key + "&t=",
+  // + api_title + "&plot=full"
   "method": "GET",
 }
 
