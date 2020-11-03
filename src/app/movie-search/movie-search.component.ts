@@ -2,10 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
 import { NgModule } from '@angular/core';
+import {NgForm} from '@angular/forms';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import {AppComponent} from "../app.component";
+export class SearchQuery {
+  //the string the user passed in from the search bar
+  public searchQueryFromUser: string = '';
 
+}
 @NgModule({
   imports: [
     BrowserModule,
@@ -22,16 +28,21 @@ import {AppComponent} from "../app.component";
   templateUrl: './movie-search.component.html',
   styleUrls: ['./movie-search.component.css']
 })
+
+
 export class MovieSearchComponent implements OnInit {
+
   constructor(private http: HttpClient) { }
+
   ngOnInit() {
   }
-  onSubmit(form): void {
-   // console.log(form.value);
-   // this.http.get<any>(settings.url, settings).subscribe(data => {
-   //   console.log(data);
-   // });
 
+  model = new SearchQuery();
+
+  onSubmit(f: NgForm): void {
+
+    console.log(f.value.searchQueryFromUser);
+    
     // @ts-ignore
     this.http.get<any>(settings2.url, settings2).subscribe(data => {
       console.log(data);
