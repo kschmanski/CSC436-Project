@@ -11,6 +11,7 @@ import { ForumPageComponent } from './forum-page/forum-page.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { InteractionService } from './interaction.service';
 
 const routes: Routes = [
   {path: 'movie-detail', component: MovieDetailComponent},
@@ -37,7 +38,7 @@ const routes: Routes = [
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [InteractionService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
