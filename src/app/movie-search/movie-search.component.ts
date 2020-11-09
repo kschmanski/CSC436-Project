@@ -7,6 +7,9 @@ import {NgForm} from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import {AppComponent} from "../app.component";
+import { InteractionService } from '../interaction.service';
+
+
 export class SearchQuery {
   //the string the user passed in from the search bar
   public searchQueryFromUser: string = '';
@@ -31,6 +34,7 @@ export class SearchQuery {
 
 
 export class MovieSearchComponent implements OnInit {
+  
 
   /**
    * Returns the API query string to call, based on the movie query string supplied by the user.
@@ -41,10 +45,22 @@ export class MovieSearchComponent implements OnInit {
   getApiStringForMovie(settings, movie_title_to_search : string) {
     return settings.url_without_movie_title + movie_title_to_search + "&plot=full";
   }
+ 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private _interactionService: InteractionService) { }
 
+  result: any;
+  message: string;
+
+  /*ngOnInit() {
+    this.message = this._interactionService.getMessage();
+    console.log("hello world");
+    console.log(this.message);
+  }*/
+  msg: any;;
   ngOnInit() {
+    this.msg = this._interactionService.getMessage;
+    console.log(this._interactionService.getMessage);
   }
 
   model = new SearchQuery();
@@ -55,9 +71,10 @@ export class MovieSearchComponent implements OnInit {
     // @ts-ignore
     this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
         console.log(api_data);
+        console.log(api_data[0]);
+        this.result = api_data.Search;
       })
   }
-
 }
 
 var api_key = "430ac435";
@@ -66,8 +83,8 @@ var api_title = "good";
 var api_settings = {
   "async": true,
   "crossDomain": true,
-  "url": "http://www.omdbapi.com/?apikey=" + api_key + "&t=" + api_title + "&plot=full", //not currently used but leaving it here for documentation
-  "url_without_movie_title": "http://www.omdbapi.com/?apikey=" + api_key + "&t=",
+  "url": "http://www.omdbapi.com/?apikey=" + api_key + "&s=" + api_title + "&plot=full", //not currently used but leaving it here for documentation
+  "url_without_movie_title": "http://www.omdbapi.com/?apikey=" + api_key + "&s=",
   "method": "GET",
 }
 
