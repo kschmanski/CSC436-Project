@@ -37,6 +37,44 @@
     <h2 style="margin:12px 12px 12px 12px">Results:</h2>
 
   <!--Following contents are about returning JSON, which is for Milestone 4, I'll leave it there for now, but I can still change style or whatever if needed. -->
+    <!--
+  <ul>
+    <li *ngFor="let resultObj of result">
+      {{ resultObj.Title}}
+    </li>
+ </ul>  
+-->
+<h1>message</h1>
+{{message}}
+
+ <table class="table table-hover" style="margin:24px 24px 24px 24px">
+    <thead>
+        <tr>
+            <th scope="col">Movie Title</th>
+            <th scope="col">Add to Favorite</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tbody>
+            <tr *ngFor="let resultObj of result">
+                <td><a style="cursor:pointer">
+                    {{ resultObj.Title}}
+                </a></td>
+
+                <td><a style="cursor:pointer">
+                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
+                        </svg>
+                </a></td>
+            </tr>
+        </tbody>
+
+ </table>
+
+<!--
 
     <table class="table table-hover" style="margin:24px 24px 24px 24px">
         <thead>
@@ -129,7 +167,7 @@
             </tr>
         </tbody>
     </table>
+    -->
 </form>
 </body>
-
 </html>
