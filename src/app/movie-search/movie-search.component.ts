@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 import { NgModule } from '@angular/core';
 import {NgForm} from '@angular/forms';
@@ -34,8 +34,6 @@ export class SearchQuery {
 
 
 export class MovieSearchComponent implements OnInit {
-
-
   /**
    * Returns the API query string to call, based on the movie query string supplied by the user.
    *
@@ -50,7 +48,7 @@ export class MovieSearchComponent implements OnInit {
 
   result: any;
   msg: any;
-  
+
   ngOnInit() {
     this._interactionService.message$.subscribe(
       message => {
