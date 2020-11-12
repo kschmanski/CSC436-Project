@@ -1,22 +1,29 @@
 import { Injectable } from '@angular/core';
+import {Subject} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InteractionService {
 
-  //private _messageSource = new Subject<string>();
   message: string;
-  //message$ = this._messageSource.asObservable();
+
+  private _messageSource = new Subject<string>();
+  message$ = this._messageSource.asObservable();
 
   constructor() { }
 
-  setMessage(str: string){
-    this.message = str;
+  /**
+   * Sends message from one component to the other.
+   *
+   * @param inputMessage
+   */
+  sendMessage(inputMessage: string) {
+    this.message = inputMessage;
+    this._messageSource.next(inputMessage);
   }
 
   getMessage(){
-    console.log("get message: ");
     return this.message;
   }
 }

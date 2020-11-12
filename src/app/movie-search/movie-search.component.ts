@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 
 import { NgModule } from '@angular/core';
 import {NgForm} from '@angular/forms';
@@ -34,7 +34,7 @@ export class SearchQuery {
 
 
 export class MovieSearchComponent implements OnInit {
-  
+
 
   /**
    * Returns the API query string to call, based on the movie query string supplied by the user.
@@ -45,22 +45,19 @@ export class MovieSearchComponent implements OnInit {
   getApiStringForMovie(settings, movie_title_to_search : string) {
     return settings.url_without_movie_title + movie_title_to_search + "&plot=full";
   }
- 
 
   constructor(private http: HttpClient, private _interactionService: InteractionService) { }
 
   result: any;
-  message: string;
-
-  /*ngOnInit() {
-    this.message = this._interactionService.getMessage();
-    console.log("hello world");
-    console.log(this.message);
-  }*/
-  msg: any;;
+  msg: any;
+  
   ngOnInit() {
-    this.msg = this._interactionService.getMessage;
-    console.log(this._interactionService.getMessage);
+    this._interactionService.message$.subscribe(
+      message => {
+          this.msg = this._interactionService.message$;
+          console.log('Movie Search Component received Message: ' + this._interactionService.getMessage());
+      }
+    )
   }
 
   model = new SearchQuery();

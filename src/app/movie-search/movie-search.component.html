@@ -34,18 +34,8 @@
         <input class="form-control" [(ngModel)]="model.searchQueryFromUser" name ="searchQueryFromUser" style="width:auto; display: inline;">
       <button class="btn btn-success form-control" style="width:auto;">Search!</button>
     </div>
-    <h2 style="margin:12px 12px 12px 12px">Results:</h2>
 
-  <!--Following contents are about returning JSON, which is for Milestone 4, I'll leave it there for now, but I can still change style or whatever if needed. -->
-    <!--
-  <ul>
-    <li *ngFor="let resultObj of result">
-      {{ resultObj.Title}}
-    </li>
- </ul>  
--->
-<h1>message</h1>
-{{message}}
+      <h2 style="margin:12px 12px 12px 12px">Results:</h2>
 
  <table class="table table-hover" style="margin:24px 24px 24px 24px">
     <thead>
@@ -73,101 +63,6 @@
         </tbody>
 
  </table>
-
-<!--
-
-    <table class="table table-hover" style="margin:24px 24px 24px 24px">
-        <thead>
-            <tr>
-                <th scope="col">Movie Title</th>
-                <th scope="col">Add to Favorite</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><a style="cursor:pointer">
-                        <h3>The Dark Knight </h3>
-                    </a></td>
-                <td>
-                    <a style="cursor:pointer">
-                        <h3>
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                            </svg>
-                        </h3>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td><a style="cursor:pointer">
-                        <h3>Inception </h3>
-                    </a></td>
-                <td>
-                    <a style="cursor:pointer">
-                        <h3>
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                            </svg>
-                        </h3>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td><a style="cursor:pointer">
-                        <h3>Star Wars: Episode V - The Empire Strikes Back </h3>
-                    </a></td>
-                <td>
-                    <a style="cursor:pointer">
-                        <h3>
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                            </svg>
-                        </h3>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td><a style="cursor:pointer">
-                        <h3>Avengers: Endgame</h3>
-                    </a></td>
-                <td>
-                    <a style="cursor:pointer">
-                        <h3>
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                            </svg>
-                        </h3>
-                    </a>
-                </td>
-
-            </tr>
-            <tr>
-                <td><a style="cursor:pointer">
-                        <h3>Black Panther</h3>
-                    </a></td>
-                <td>
-                    <a style="cursor:pointer">
-                        <h3>
-                            <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                            </svg>
-                        </h3>
-                    </a>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    -->
 </form>
 </body>
 </html>
