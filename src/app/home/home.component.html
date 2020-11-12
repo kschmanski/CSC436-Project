@@ -3,14 +3,13 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <h1>Movie App</h1>  
+      <h1>Movie App</h1>
 
-      <form class="form-inline">
+    <form class="form-inline">
         <i class="fas fa-search" aria-hidden="true"></i>
-        <input class="form-control form-control-lg w-75" [(ngModel)]="sQFromUser" name ="sQFromUser" placeholder="Search for a Movie"
+        <input class="form-control form-control-lg w-75" [(ngModel)]="sQFromUser" id="sQFromUser" name ="sQFromUser" placeholder="Search for a Movie"
             aria-label="Search">
-        <!--<button class="btn btn-primary ml-3 btn-lg" role="button">Search</button>-->
-        <a href="search-movie"  (click)="sendM()" class="btn btn-primary ml-3 btn-lg">Search</a>
+        <a href="search-movie"  (click)="sendMessageFromHomeComponent()" class="btn btn-primary ml-3 btn-lg">Search</a>
       </form>
 
     </div>
@@ -26,7 +25,7 @@
 
     <div class="col-md-4">
       <h3>Suggested Movies</h3>
-      <div class="list-group"> 
+      <div class="list-group">
         <a href="movie-detail" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-2 h4">{{movie_name}}</h5>
@@ -60,7 +59,7 @@
 
     <div class="col-md-4">
       <h3>Forum Topics</h3>
-      <div class="list-group"> 
+      <div class="list-group">
         <a href="forum" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-2 h4">Topic 1</h5>
