@@ -12,6 +12,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InteractionService } from './interaction.service';
+//import { MovieComponent } from './favorites/movie/movie.component';
 
 const routes: Routes = [
   {path: 'movie-detail', component: MovieDetailComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
     ForumPageComponent,
     FavoritesComponent,
     HomeComponent,
+    //MovieComponent,
   ],
   imports: [
     BrowserModule,

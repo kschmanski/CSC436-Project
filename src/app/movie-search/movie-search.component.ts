@@ -70,6 +70,11 @@ export class MovieSearchComponent implements OnInit {
         this.result = api_data.Search;
       })
   }
+
+  addFave(title: string): void{
+    console.log(title);
+    this._interactionService.sendMessage(title);
+  }
 }
 
 var api_key = "430ac435";
