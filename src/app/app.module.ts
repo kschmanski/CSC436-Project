@@ -1,6 +1,7 @@
+import { AuthGuard } from './auth.guard';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
-
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
 import { MovieDetailComponent } from './movie-detail/movie-detail.component';
 import { RouterModule, Routes } from '@angular/router';
@@ -12,13 +13,17 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InteractionService } from './interaction.service';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   {path: 'movie-detail', component: MovieDetailComponent},
   {path: 'search-movie', component: MovieSearchComponent},
-  {path: 'forum', component: ForumPageComponent},
-  {path: 'favorites', component: FavoritesComponent},
+  {path: 'forum', component: ForumPageComponent, canActivate: [AuthGuard]},
+  {path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent},
+  {path: 'login', component: LoginComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'}
 ];
 
@@ -31,12 +36,15 @@ const routes: Routes = [
     ForumPageComponent,
     FavoritesComponent,
     HomeComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
   ],
   providers: [InteractionService],
   bootstrap: [AppComponent]

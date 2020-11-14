@@ -1,6 +1,6 @@
 
 <nav class="navbar navbar-expand-sm bg-primary navbar-dark fixed-top">
-  <ul class="navbar-nav">
+  <ul class="nav navbar-nav navbar-left">
 
     <!-- maybe we could add a link to the home page here? -->
     <div class = "navbar-header">
@@ -28,7 +28,10 @@
     <a class="nav-link" [routerLink]="['/movie-detail']">Movie Detail</a>
     <a class="nav-item nav-link" [routerLink]="['/forum']">Forum</a>
     <a class="nav-link" [routerLink]="['/favorites']">Favorites</a>
-
+    
+  </ul>
+  <ul class="nav navbar-nav navbar-right">
+    <li><a class="nav-link" [routerLink]="['/login']">Login</a></li>
   </ul>
 </nav>
 <br />

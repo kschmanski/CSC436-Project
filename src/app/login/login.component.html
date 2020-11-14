@@ -1,0 +1,62 @@
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+<style>
+.fa-google {
+  background: conic-gradient(from -45deg, #ea4335 110deg, #4285f4 90deg 180deg, #34a853 180deg 270deg, #fbbc05 270deg) 73% 55%/150% 150% no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+.fa-facebook-square {
+  color: #3b5998;
+  background-image: linear-gradient( to bottom, transparent 20%, white 20%, white 93%, transparent 93% );
+  background-size: 55%;
+  background-position: 70% 0;
+  background-repeat: no-repeat;
+}
+
+</style>
+
+<div *ngIf="auth.user | async as user; else showLogin">
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Hello {{ user.displayName }}!</h1>
+            <h3 style="color: grey"> Welcome to Movella! You are now in the world of movies, feel comfortable to explore the site!</h3>
+          </div>
+    <div class="row" style="margin:auto;display: flex;justify-content: center;">
+        <div class="col-xs-12 col-md-4" ></div>
+        <div class="col-xs-12 col-md-4" >
+            <button (click)="logout()">Logout</button>
+        </div>
+        <div class="col-xs-12 col-md-4"></div>
+    </div>
+    
+</div>
+</div>
+<ng-template #showLogin>
+    
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Welcome to Movella!</h1>
+
+          </div>
+        <div class="row" style="margin:auto;display: flex;justify-content: center;">
+            <div class="col-xs-12 col-md-4" ></div>
+            <div class="col-xs-12 col-md-4" >
+                <div class="thumbnail">
+                <div class="caption">
+                  <h2>Sign in with ...</h2>
+                  <br>
+                  <div class="row">
+                    <div class="col-xs-4 col-md-4" > <button class="btn btn-default" (click)="login()"><i class="fab fa-google fa-3x"></i></button></div>
+                    <div class="col-xs-4 col-md-4" > <button class="btn btn-default" (click)="loginFB()"><i class="fab fa-facebook-square fa-3x"></i></button></div>
+                </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 col-md-4"></div>
+        </div>
+      </div>
+    
+</ng-template>
