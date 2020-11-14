@@ -1,4 +1,25 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+
+let counter: number = 0;
+
+export class Post {
+  username : string;
+  title : string;
+  content : string;
+  views : number;
+  comments : number;
+  createdDate : Date;
+
+
+  constructor(text : string){
+    this.username = "username";
+    this.title = "This is a new title " + counter++;
+    this.content = text;
+    this.views = 0;
+    this.comments = 55;
+    this.createdDate = new Date();
+  }
+};
 
 @Component({
   selector: 'app-forum-post',
@@ -6,10 +27,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./forum-post.component.css']
 })
 export class ForumPostComponent implements OnInit {
+  usernname : string;
+  title : string;
+  content : string;
+  views : number;
+  comments : number;
+  createdDate : Date;
+
+  @Output() newPostEvent = new EventEmitter<number>();
 
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit():void {
+  }
+
+  public newPost;
+
+
+  public addToList() {
+    this.newPost.emit(this.newPost);
+    this.newPost = "";
   }
 
 }

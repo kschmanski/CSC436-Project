@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ForumService } from './../forum.service'
 import { Subscription } from 'rxjs';
+import { Post } from './../forum-post/forum-post.component'
 
 @Component({
   selector: 'app-forum-page',
   templateUrl: './forum-page.component.html',
   styleUrls: ['./forum-page.component.css']
 })
+
 export class ForumPageComponent implements OnInit {
-  items: string[] = [];
+  // items: string[] = [];
+  items: Post[] = [];
   private sub = new Subscription();
 
 
@@ -18,8 +21,10 @@ export class ForumPageComponent implements OnInit {
     this.sub = this.service.getList().subscribe(post => this.items = post);
   }
 
-  public addNewPost(newPost: string){
+  public addNewPost(text: string){
+    let newPost : Post = new Post(text);
     this.service.add(newPost);
+    console.log("New Post!");
   }
 
   public deletePost(index: number){
