@@ -28,16 +28,15 @@
     <div class="page-header">
         <h1>Movies Search<small></small></h1>
     </div>
-    <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
+    <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)" ng-init="onReset(searchForm)">
     <div style="margin:12px 12px 12px 12px">
         <h2 style="display:inline">Search: </h2>
-        <input class="form-control" [(ngModel)]="model.searchQueryFromUser" name ="searchQueryFromUser" style="width:auto; display: inline;">
-      <button class="btn btn-success form-control" style="width:auto;">Search!</button>
+        <input class="form-control"  [(ngModel)]="model.searchQueryFromUser" name ="searchQueryFromUser" style="width:auto; display: inline;">
+      <button class="btn btn-success form-control" id="search" style="width:auto;">Search!</button>
     </div>
-
       <h2 style="margin:12px 12px 12px 12px">Results:</h2>
 
- <table class="table table-hover" style="margin:24px 24px 24px 24px">
+ <table class="table table-hover" onload="onReset(searchForm)" style="margin:24px 24px 24px 24px">
     <thead>
         <tr>
             <th scope="col">Movie Title</th>

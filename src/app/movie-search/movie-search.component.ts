@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
-
+import {Component, OnInit, ViewChild} from '@angular/core';
+import { map } from 'rxjs/operators';
 import { NgModule } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {NgForm, FormGroup, FormControl, Validators} from '@angular/forms';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
@@ -13,6 +13,7 @@ import { InteractionService } from '../interaction.service';
 export class SearchQuery {
   //the string the user passed in from the search bar
   public searchQueryFromUser: string = '';
+  public message: string = '';
 
 }
 @NgModule({
@@ -32,7 +33,6 @@ export class SearchQuery {
   styleUrls: ['./movie-search.component.css']
 })
 
-
 export class MovieSearchComponent implements OnInit {
   /**
    * Returns the API query string to call, based on the movie query string supplied by the user.
@@ -44,7 +44,11 @@ export class MovieSearchComponent implements OnInit {
     return settings.url_without_movie_title + movie_title_to_search + "&plot=full";
   }
 
-  constructor(private http: HttpClient, private _interactionService: InteractionService) { }
+  constructor(private http: HttpClient, private _interactionService: InteractionService) {
+  }
+
+  name = new FormControl('');
+  name2 = new NgForm(null, null);
 
   result: any;
   msg: any;
@@ -52,16 +56,42 @@ export class MovieSearchComponent implements OnInit {
   ngOnInit() {
     this._interactionService.message$.subscribe(
       message => {
-          this.msg = this._interactionService.message$;
+          this.msg = this._interactionService.getMessage();
           console.log('Movie Search Component received Message: ' + this._interactionService.getMessage());
+          console.log('this.msg is now ' + this.msg);
+          this.myFunction(this.msg);
       }
     )
+  }
+
+  myFunction(message : string) {
+    console.log('myFunction: ' + message);
+
+    this.name.setValue(message);
+    //this.name2.controls['message'].setValue(message);
+    //this.name2.setValue(message);
+    this.name2.controls.state.setValue(message);
+
+    console.log('calling API');
+    var apiStringToQuery = this.getApiStringForMovie(api_settings, message);
+    console.log(apiStringToQuery);
+
+    // @ts-ignore
+    this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
+      console.log(api_data);
+      console.log(api_data[0]);
+      this.result = api_data.Search;
+    })
   }
 
   model = new SearchQuery();
 
   onSubmit(f: NgForm): void {
-    var apiStringToQuery = this.getApiStringForMovie(api_settings, f.value.searchQueryFromUser);
+    console.log('in onSubmit');
+    console.log(this.name2);
+    console.log(this.name);
+    //var apiStringToQuery = this.getApiStringForMovie(api_settings, f.value.searchQueryFromUser);
+    var apiStringToQuery = this.getApiStringForMovie(api_settings, this.name.value);
 
     // @ts-ignore
     this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
@@ -69,6 +99,16 @@ export class MovieSearchComponent implements OnInit {
         console.log(api_data[0]);
         this.result = api_data.Search;
       })
+
+    f.reset();
+  }
+
+    load() {
+    console.log('in load()');
+    }
+  onReset(f: NgForm) {
+    console.log('in reset');
+    console.log(f);
   }
 }
 
