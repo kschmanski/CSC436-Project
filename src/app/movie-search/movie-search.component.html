@@ -47,7 +47,7 @@
     <tbody>
         <tbody>
             <tr *ngFor="let resultObj of result">
-                <td><a style="cursor:pointer">
+                <td><a style="cursor:pointer" href="movie-detail" (click)="redirectFromSearchToDetail(resultObj.Title)">
                     {{ resultObj.Title}}
                 </a></td>
 

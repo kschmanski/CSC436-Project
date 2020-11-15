@@ -9,7 +9,6 @@ import { HttpClientModule } from '@angular/common/http';
 import {AppComponent} from "../app.component";
 import { InteractionService } from '../interaction.service';
 
-
 export class SearchQuery {
   //the string the user passed in from the search bar
   public searchQueryFromUser: string = '';
@@ -44,7 +43,9 @@ export class MovieSearchComponent implements OnInit {
     return settings.url_without_movie_title + movie_title_to_search + "&plot=full";
   }
 
-  constructor(private http: HttpClient, private _interactionService: InteractionService) {
+  constructor(private http: HttpClient, private _interactionService: InteractionService
+
+  ) {
   }
 
   name = new FormControl('');
@@ -54,14 +55,14 @@ export class MovieSearchComponent implements OnInit {
   msg: any;
 
   ngOnInit() {
-    this._interactionService.message$.subscribe(
-      message => {
-          this.msg = this._interactionService.getMessage();
-          console.log('Movie Search Component received Message: ' + this._interactionService.getMessage());
-          console.log('this.msg is now ' + this.msg);
-          this.myFunction(this.msg);
-      }
-    )
+    // this._interactionService.message$.subscribe(
+    //   message => {
+    //       this.msg = this._interactionService.getMessage();
+    //       console.log('Movie Search Component received Message: ' + this._interactionService.getMessage());
+    //       console.log('this.msg is now ' + this.msg);
+    //       this.myFunction(this.msg);
+    //   }
+    // )
   }
 
   myFunction(message : string) {
@@ -87,28 +88,49 @@ export class MovieSearchComponent implements OnInit {
   model = new SearchQuery();
 
   onSubmit(f: NgForm): void {
-    console.log('in onSubmit');
-    console.log(this.name2);
-    console.log(this.name);
-    //var apiStringToQuery = this.getApiStringForMovie(api_settings, f.value.searchQueryFromUser);
-    var apiStringToQuery = this.getApiStringForMovie(api_settings, this.name.value);
+
+    var apiStringToQuery = this.getApiStringForMovie(api_settings, f.value.searchQueryFromUser);
+    //var apiStringToQuery = this.getApiStringForMovie(api_settings, this.name.value);
 
     // @ts-ignore
     this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
-        console.log(api_data);
-        console.log(api_data[0]);
+        //console.log(api_data);
+        //console.log(api_data[0]);
         this.result = api_data.Search;
       })
 
-    f.reset();
   }
 
-    load() {
-    console.log('in load()');
-    }
-  onReset(f: NgForm) {
-    console.log('in reset');
-    console.log(f);
+  redirectFromSearchToDetail(movieTitle) {
+
+    //console.log('redirect from search to detail');
+
+    console.log('title is: ');
+    console.log(movieTitle);
+
+    console.log('calling setCookie');
+    //this.setCookie(movieObject);
+    localStorage.setItem('movie-title', movieTitle);
+
+    console.log(localStorage.getItem('movie-title'));
+
+    //document.cookie="movie-name='" + title + "';";
+
+    //console.log(document.cookie);
+    this._interactionService.sendMessage(movieTitle);
+
+  }
+
+  setCookie(title) {
+    console.log('setting cookie');
+    var d = new Date();
+
+    d.setTime(d.getTime() + 100);
+    var expires = "expires="+ d.toUTCString();
+    document.cookie = "movie-name" + "=" + title + ";" + expires + ";path=/";
+
+    console.log('all finished setting cookie');
+    console.log('cookie is ' + document.cookie);
   }
 }
 
