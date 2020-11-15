@@ -6,19 +6,23 @@
 </head>
 
 
-<app-movie-search (addFaveEvent)="addToFaves($event)" > </app-movie-search>
+<!-- This code was to test if the search results page was talking to the favorites page
+  If I keep the search results component, then the movies are added consistently but they 
+  are not saved. So if the page is reloaded, then this favorite component is reinitialized-->
+  <app-movie-search (addFaveEvent)="addToFaves($event)"> </app-movie-search>
+
 
 <h2 style="text-align: center">
   Favorites
 </h2>
 
     <div class="container">
-
+      <div class="row justify-content-md-center">
         <div class="card" *ngFor="let card of Cards; let index = index;">
            <img class="card-img-top" src={{card.poster}} alt="Card image cap">
            <div class="card-body">
             <h5 class="card-title">
-                <a href=#{{card.Title}} class="movie_page">{{card.title}} ({{card.year}})</a>
+                <a href=#{{card.title}} class="movie_page">{{card.title}} ({{card.year}})</a>
             </h5>
             <p class="card-text">
               <b>Directed By:</b> {{card.director}} <br> <br>
@@ -33,5 +37,5 @@
             </button>
           </div>
         </div>
-
+      </div>
     </div>

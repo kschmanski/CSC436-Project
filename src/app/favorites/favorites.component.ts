@@ -1,7 +1,5 @@
 import { Component, OnInit, NgModule } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {NgForm} from '@angular/forms';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { InteractionService } from '../interaction.service';
@@ -34,41 +32,73 @@ export class Card {
 })
 
 export class FavoritesComponent implements OnInit {
-  public Cards = [];
-  temp = new Card();
-  constructor(private http: HttpClient, private _interactionService: InteractionService) {   }
+  public Cards: Card[] = [];
+
+  constructor(private http: HttpClient, private _interactionService: InteractionService) {
+    /**this._interactionService.message$.subscribe(value => {
+       this.addToFaves(value);
+    });
+    */
+
+    }
 
   ngOnInit(): void {
-    this.addToFaves(this._interactionService.getMessage());
+    this._interactionService.message$.subscribe(value => {
+      var temp = value;
+      this.addToFaves(value);
+   });
+
+   /**
+    * this line does take in messages from the search page but
+    * it only keepts the most recent favorited movie and doesn't
+    * add additional movies to the Cards array
+   //this.addToFaves(this._interactionService.getMessage());
+    */
+
+
+     //this.addToFaves('Good Will Hunting');
+    //console.log(this.Cards);
+    //this.addToFaves('The Dark Knight');
+    //console.log(this.Cards);
+
+    /** 
+    this._interactionService.message$.subscribe(
+      message => {
+          this.msg = this._interactionService.getMessage();
+          console.log('Movie Search Component received Message: ' + this._interactionService.getMessage());
+          console.log('this.msg is now ' + this.msg);
+          this.addToFaves(this.msg);
+      }
+    )
+  */
+    //this.addToFaves(this._interactionService.getMessage());
     //this.addToFaves('The Dark Knight');
     //this.addToFaves('Good Will Hunting');
     //this.addToFaves('Bajirao Mastani');
   }
 
-  getApiStringForMovie(settings, movie_title_to_search : string) {
-    return settings.url_without_movie_title + movie_title_to_search + "&plot=full";
+  public removeCards(index){
+    this.Cards.splice(index, 1);
   }
 
-  public addToFaves(title: string){
-    this.temp = new Card();
+  public addToFaves(title: string) {
+    var card = new Card();
     var apiStringToQuery = this.getApiStringForMovie(api_settings, title);
         // @ts-ignore
     this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
           console.log(api_data);
-          this.temp.title = api_data.Title; //
-          this.temp.poster = api_data.Poster; //
-          this.temp.year = api_data.Year; //
-          this.temp.actors = api_data.Actors; //
-          this.temp.director = api_data.Director;//
+          card.title = api_data.Title;
+          card.poster = api_data.Poster;
+          card.year = api_data.Year;
+          card.actors = api_data.Actors;
+          card.director = api_data.Director;
         });
-
-    this.Cards.push(this.temp);
+    this.Cards.push(card);
     console.log(this.Cards);
   }
 
-  public removeCards(index){
-    this.Cards.splice(index, 1);
-
+  private getApiStringForMovie(settings, movie_title_to_search : string) {
+    return settings.url_without_movie_title + movie_title_to_search + "&plot=full";
   }
 }
 
