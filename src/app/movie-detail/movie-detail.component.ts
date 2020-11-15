@@ -63,11 +63,22 @@ export class MovieDetailComponent implements OnInit {
   ngOnInit() {
     //this.onSubmit1();
     console.log('in onInit for movie detail');
+     this.getDetails();
 
-    this._interactionService.message$.subscribe(
+
+     console.log(localStorage.getItem('movie-title'));
+
+     this.onSubmit2(localStorage.getItem('movie-title'));
+  }
+
+  getDetails() {
+    console.log('getDetails');
+    return     this._interactionService.message$.subscribe(
       message => {
-          console.log('Movie Detail Component received Message: ' + this._interactionService.getMessage());
-         this.onSubmit2(this._interactionService.getMessage());
+        console.log('Movie Detail Component received Message: ' + this._interactionService.getMessage());
+        //this.onSubmit2(this._interactionService.getMessage());
+        localStorage.setItem('movie-title', this._interactionService.getMessage());
+
       }
     )
   }
