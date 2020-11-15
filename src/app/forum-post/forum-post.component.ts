@@ -11,10 +11,10 @@ export class Post {
   createdDate : Date;
 
 
-  constructor(text : string){
+  constructor(title : string, body : string){
     this.username = "username";
-    this.title = "This is a new title " + counter++;
-    this.content = text;
+    this.title = title;
+    this.content = body;
     this.views = 0;
     this.comments = 55;
     this.createdDate = new Date();

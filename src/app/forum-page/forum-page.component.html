@@ -10,83 +10,43 @@
     </label>
 </div>
 
-<!-- <div class="container" style=" padding-top: 2%; padding: 3%;">
-    <div class="row">
-        <div class="col border bg-light d-flex justify-content-center align-items-center">
-            Username
-        </div>
-        <div class="col-7 bg-light">
-            <div class="row">
-                <div class="col justify-content-center">
-                    <a href="">New Movie Release</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col justify-content-center">
-                    <p  style="font-size: small;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col bg-light">
-            <div class="row bg-light border" style="height:33%">
-                <div class="col d-flex justify-content-center">
-                    87 Comments
-                </div>
-            </div>
-            <div class="row bg-light border" style="height: 33%;">
-                <div class="col d-flex justify-content-center">
-                    128 Views
-                </div>
-            </div>
-            <div class="row bg-light border" style="height: 33%;">
-                <div class="col d-flex justify-content-center">
-                    15mins ago
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<div class="container" style=" padding-top: 2%; padding: 3%;">
-    <div class="row">
-        <div class="col border bg-light d-flex justify-content-center align-items-center">
-            Username
-        </div>
-        <div class="col-7 bg-light">
-            <div class="row">
-                <div class="col justify-content-center">
-                    <a href=""> Best Movies of 2020</a>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col justify-content-center">
-                    <p  style="font-size: small;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                </div>
-            </div>
-        </div>
-        <div class="col bg-light">
-            <div class="row bg-light border" style="height:33%">
-                <div class="col d-flex justify-content-center">
-                    45 Comments
-                </div>
-            </div>
-            <div class="row bg-light border" style="height: 33%;">
-                <div class="col d-flex justify-content-center">
-                    108 Views
-                </div>
-            </div>
-            <div class="row bg-light border" style="height: 33%;">
-                <div class="col d-flex justify-content-center">
-                    1hr ago
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
 
-<button (click)="addNewPost()" class="btn btn-light">
+<!-- <button (click)="addNewPost()" class="btn btn-light">
     New Post
-</button>
+</button> -->
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postModal">New Post</button>
+
+<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="postModalLabel">New Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Title:</label>
+            <input type="text" class="form-control" placeholder="Title" #postTitle>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Body:</label>
+            <textarea class="form-control" id="body-text" placeholder="Write Message..." #postContent></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button (click)="addNewPost(postTitle.value, postContent.value)" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <app-forum-post (newPostEvent)="addNewPost(test)"></app-forum-post>
 
@@ -106,19 +66,19 @@
                     </div>
                     <div class="row">
                         <div class="col justify-content-center">
-                            <p  style="font-size: small;">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+                            <p  style="font-size: small;"> {{x.content}} </p>
                         </div>
                     </div>
                 </div>
                 <div class="col bg-light">
                     <div class="row bg-light border" style="height:33%">
                         <div class="col d-flex justify-content-center">
-                            45 Comments
+                            {{x.comments}} Comments
                         </div>
                     </div>
                     <div class="row bg-light border" style="height: 33%;">
                         <div class="col d-flex justify-content-center">
-                            108 Views
+                            {{x.views}} Views
                         </div>
                     </div>
                     <div class="row bg-light border" style="height: 33%;">

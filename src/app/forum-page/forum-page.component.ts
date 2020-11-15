@@ -21,8 +21,8 @@ export class ForumPageComponent implements OnInit {
     this.sub = this.service.getList().subscribe(post => this.items = post);
   }
 
-  public addNewPost(text: string){
-    let newPost : Post = new Post(text);
+  public addNewPost(title: string, body: string){
+    let newPost : Post = new Post(title, body);
     this.service.add(newPost);
     console.log("New Post!");
   }
