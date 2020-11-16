@@ -48,16 +48,18 @@ export class MovieDetailComponent implements OnInit {
   year: string;
   actors: string;
 
-  getApiStringForMovie(settings, movie_title_to_search : string) {
+  getApiStringForMovie(settings, movie_title_to_search: string) {
     return settings.url_without_movie_title + movie_title_to_search + "&plot=full";
   }
+
   result: any;
 
-  constructor(private http: HttpClient, private _interactionService: InteractionService) { }
+  constructor(private http: HttpClient, private _interactionService: InteractionService) {
+  }
 
   ngOnInit() {
-     this.storeMovieTitleFromSearch();
-     this.displayMovieResultsFromUserSearch(localStorage.getItem('movie-title'));
+    this.storeMovieTitleFromSearch();
+    this.displayMovieResultsFromUserSearch(localStorage.getItem('movie-title'));
   }
 
   /**
@@ -107,10 +109,11 @@ export class MovieDetailComponent implements OnInit {
     this._interactionService.sendMessage(f.value.sQFromUser);
   }
 
-  addFave(title: string): void{
+  addFave(title: string): void {
     //console.log(title);
     localStorage.setItem('fave: ' + title, title);
-    this._interactionService.sendMessage(title);  
+    this._interactionService.sendMessage(title);
+  }
 }
 
 var api_key = "430ac435";
