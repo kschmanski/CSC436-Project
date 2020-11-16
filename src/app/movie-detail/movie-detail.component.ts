@@ -62,7 +62,7 @@ export class MovieDetailComponent implements OnInit {
 
   ngOnInit() {
      this.storeMovieTitleFromSearch();
-     this.onSubmit2(localStorage.getItem('movie-title'));
+     this.displayMovieResultsFromUserSearch(localStorage.getItem('movie-title'));
   }
 
   /**
@@ -77,9 +77,12 @@ export class MovieDetailComponent implements OnInit {
     )
   }
 
-  //model = new SQ();
-
-  onSubmit2(title): void {
+  /**
+   * Displays the movie results on the Movie Detail page based on the link the user clicked.
+   *
+   * @param title Title coming from the user's search
+   */
+  displayMovieResultsFromUserSearch(title): void {
     var apiStringToQuery = this.getApiStringForMovie(api_settings, title);
 
     // @ts-ignore
@@ -109,7 +112,6 @@ export class MovieDetailComponent implements OnInit {
 
     // @ts-ignore
     this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
-        console.log(api_data);
         this.title = api_data.Title; //
         this.awards = api_data.Awards;//
         this.boxOffice = api_data.BoxOffice;//
@@ -122,14 +124,11 @@ export class MovieDetailComponent implements OnInit {
         this.production = api_data.Production;
         this.rated = api_data.Rated;//
         this.imdbRating = api_data.imdbRating;
-        //this.rotenRating = api_data.Ratings[1];
-        //this.metacritics = api_data.Ratings[2];
         this.released = api_data.Released;//
         this.runtime = api_data.Runtime;//
         this.writer = api_data.Writer;
         this.year = api_data.Year;//
         this.actors = api_data.Actors;//
-        //this.result = api_data.Search;
       })
   }
 }
