@@ -16,7 +16,6 @@ export class Card {
 @NgModule({
   imports: [
     BrowserModule,
-    // import HttpClientModule after BrowserModule.
     HttpClientModule,
   ],
   declarations: [
@@ -43,31 +42,27 @@ export class FavoritesComponent implements OnInit {
     }
 
   ngOnInit(): void { 
+    /** 
     this._interactionService.message$.subscribe(value => {
       var temp = value;
-      localStorage.setItem('title: ' + value, value)
+      //localStorage.setItem('title: ' + value, value)
       this.addToFaves(value);
-   });
+   });*/
 
-    for (let i = 1; i < localStorage.length; i++){
-    let key = localStorage.key(i);
-    let value = localStorage.getItem(key);
-    this.addToFaves(value);
+    for (let i = 0; i < sessionStorage.length; i++){
+    let key = sessionStorage.key(i);
+    if(key.includes('title:')) {
+      let value = sessionStorage.getItem(key);
+      this.addToFaves(value);
+    }
   }
 
-   this.addToFaves(this._interactionService.getMessage());
    /**
     * this line does take in messages from the search page but
     * it only keepts the most recent favorited movie and doesn't
     * add additional movies to the Cards array
    //this.addToFaves(this._interactionService.getMessage());
     */
-
-
-     //this.addToFaves('Good Will Hunting');
-    //console.log(this.Cards);
-    //this.addToFaves('The Dark Knight');
-    //console.log(this.Cards);
 
     /** 
     this._interactionService.message$.subscribe(
@@ -87,8 +82,12 @@ export class FavoritesComponent implements OnInit {
 
   public removeCards(index){
     this.Cards.splice(index, 1);
-    if (this.Cards.length < 1) { localStorage.clear; }
-    else { localStorage.removeItem(localStorage.key(index)); }
+    if (this.Cards.length < 1) { 
+      for(let i = 0; i < sessionStorage.length; i++){
+        sessionStorage.removeItem(localStorage.key(i));
+      }
+    }
+    else { sessionStorage.removeItem(sessionStorage.key(index)); }
   }
 
   public addToFaves(title: string) {
@@ -112,7 +111,6 @@ export class FavoritesComponent implements OnInit {
   }
 
   redirectToDetail(movieTitle) {
-
     this._interactionService.sendMessage(movieTitle);
   }
 }
