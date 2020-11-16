@@ -71,6 +71,7 @@ export class MovieDetailComponent implements OnInit {
         localStorage.setItem('movie-title', this._interactionService.getMessage());
       }
     )
+    console.log('in movie-detail ' + localStorage.getItem('movie-title'));
   }
 
   /**

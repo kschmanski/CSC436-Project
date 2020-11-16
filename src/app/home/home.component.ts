@@ -1,20 +1,18 @@
 import { InteractionService } from '../interaction.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
 import { NgModule } from '@angular/core';
 import {NgForm, NgModel} from '@angular/forms';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import {AppComponent} from '../app.component';
 import {SearchQuery} from '../movie-search/movie-search.component';
 
-
 export class SQ {
   //the string the user passed in from the search bar
   public sQFromUser: string = '';
 }
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -54,7 +52,7 @@ export class HomeComponent implements OnInit {
   constructor(private http: HttpClient, private _interactionService: InteractionService) { }
 
   ngOnInit() {
-    for(let i=0; i < this.titles.length; i++){
+    for (let i=0; i < this.titles.length; i++){
       this.suggest(this.titles[i]);
     }
   }
@@ -81,6 +79,8 @@ export class HomeComponent implements OnInit {
   redirectToDetail(movieTitle) {
     localStorage.setItem('movie-title', movieTitle);
     this._interactionService.sendMessage(movieTitle);
+    console.log(movieTitle);
+    console.log('in home ' + localStorage.getItem('movie-title'));
   }
 }
 
