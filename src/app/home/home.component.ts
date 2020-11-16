@@ -35,20 +35,9 @@ export class SQ {
 
 export class HomeComponent implements OnInit {
   public sQFromUser: string = '';
-  model = new SQ();
 
   constructor(private _interactionService: InteractionService) { }
 
   ngOnInit() {
   }
-
-  /**
-   * Sends Message from home component to other components.
-   * At this time, only the movie-search component will use this.
-   */
-  sendMessageFromHomeComponent() {
-      console.log('Sending message: ' + (<HTMLInputElement>document.getElementById('sQFromUser')).value);
-      this._interactionService.sendMessage((<HTMLInputElement>document.getElementById('sQFromUser')).value);
-  }
-
 }
