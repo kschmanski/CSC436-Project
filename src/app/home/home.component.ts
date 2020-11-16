@@ -41,6 +41,7 @@ class Movie {
 
 export class HomeComponent implements OnInit {
   public sQFromUser: string = '';
+  model = new SQ();
   suggestions = [];
   titles: Array<string> = ['Spanglish',
                             'Train to Busan',
@@ -82,6 +83,17 @@ export class HomeComponent implements OnInit {
     console.log(movieTitle);
     console.log('in home ' + localStorage.getItem('movie-title'));
   }
+
+  /**
+   * Sends Message from home component to other components.
+   * At this time, only the movie-search component will use this.
+   */
+  sendMessageFromHomeComponent() {
+      console.log('Sending message: ' + (document.getElementById('sQFromUser') as HTMLInputElement).value);
+      this._interactionService.sendMessage((document.getElementById('sQFromUser') as HTMLInputElement).value);
+      this._interactionService.sendMessage
+  }
+
 }
 
 var api_key = "430ac435";

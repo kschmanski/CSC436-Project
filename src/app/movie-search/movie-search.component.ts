@@ -47,6 +47,14 @@ export class MovieSearchComponent implements OnInit {
   result: any;
 
   ngOnInit() {
+    this.storeMovieTitleFromSearchInDetail();
+    if(localStorage.getItem('movie-title') === 'undefined'){
+      console.log('undefineddddd');
+    }else{
+      console.log(localStorage.getItem('movie-title'));
+      this.displayMovieResultsFromUserSearchinDetails(localStorage.getItem('movie-title'));
+    }
+    console.log('internal storage: ' + localStorage.getItem('movie-title'));
   }
 
 
@@ -59,7 +67,15 @@ export class MovieSearchComponent implements OnInit {
     this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
         this.result = api_data.Search;
       })
+  }
 
+  displayMovieResultsFromUserSearchinDetails(title: string): void {
+    var apiStringToQuery = this.getApiStringForMovie(api_settings, title);
+
+    // @ts-ignore
+    this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
+        this.result = api_data.Search;
+      })
   }
 
   /**
@@ -70,6 +86,15 @@ export class MovieSearchComponent implements OnInit {
   redirectFromSearchToDetail(movieTitle) {
     localStorage.setItem('movie-title', movieTitle);
     this._interactionService.sendMessage(movieTitle);
+  }
+
+  storeMovieTitleFromSearchInDetail() {
+    return     this._interactionService.message$.subscribe(
+      message => {
+        localStorage.setItem('movie-title', this._interactionService.getMessage());
+
+      }
+    )
   }
 
   addFave(title: string): void{
