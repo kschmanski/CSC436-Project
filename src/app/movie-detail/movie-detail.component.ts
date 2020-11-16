@@ -1,12 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-
 import { NgModule } from '@angular/core';
 import {NgForm} from '@angular/forms';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import {AppComponent} from "../app.component";
+import {AppComponent} from '../app.component';
 import { InteractionService } from '../interaction.service';
 
 export class SQ {
@@ -66,12 +64,11 @@ export class MovieDetailComponent implements OnInit {
    * Stores the movie title from the user's search query into local storage with the key 'movie-title'
    */
   storeMovieTitleFromSearch() {
-    return     this._interactionService.message$.subscribe(
+    return this._interactionService.message$.subscribe(
       message => {
         localStorage.setItem('movie-title', this._interactionService.getMessage());
-
       }
-    )
+    );
   }
 
   /**
@@ -109,6 +106,11 @@ export class MovieDetailComponent implements OnInit {
     localStorage.setItem('movie-title', f.value.sQFromUser);
     this._interactionService.sendMessage(f.value.sQFromUser);
   }
+
+  addFave(title: string): void{
+    //console.log(title);
+    localStorage.setItem('fave: ' + title, title);
+    this._interactionService.sendMessage(title);  
 }
 
 var api_key = "430ac435";
