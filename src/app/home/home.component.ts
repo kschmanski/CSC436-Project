@@ -1,4 +1,4 @@
-import { InteractionService } from "../interaction.service";
+import { InteractionService } from '../interaction.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
@@ -7,8 +7,8 @@ import {NgForm, NgModel} from '@angular/forms';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
-import {AppComponent} from "../app.component";
-import {SearchQuery} from "../movie-search/movie-search.component";
+import {AppComponent} from '../app.component';
+import {SearchQuery} from '../movie-search/movie-search.component';
 
 
 export class SQ {
