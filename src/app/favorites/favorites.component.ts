@@ -38,7 +38,7 @@ export class FavoritesComponent implements OnInit {
   ngOnInit(): void {
     for (let i = 0; i < localStorage.length; i++){
       let key = localStorage.key(i);
-      if(key.includes('title: ')) {
+      if(key.includes('fave: ')) {
         let value = localStorage.getItem(key);
         this.addToFaves(value);
       }
@@ -46,7 +46,7 @@ export class FavoritesComponent implements OnInit {
   }
 
   public removeCards(index) {
-    localStorage.removeItem('title: ' + this.Cards[index].title);
+    localStorage.removeItem('fave: ' + this.Cards[index].title);
     this.Cards.splice(index, 1);
   }
 

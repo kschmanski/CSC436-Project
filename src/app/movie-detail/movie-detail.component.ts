@@ -66,10 +66,9 @@ export class MovieDetailComponent implements OnInit {
    * Stores the movie title from the user's search query into local storage with the key 'movie-title'
    */
   storeMovieTitleFromSearch() {
-    return     this._interactionService.message$.subscribe(
+    return this._interactionService.message$.subscribe(
       message => {
         localStorage.setItem('movie-title', this._interactionService.getMessage());
-
       }
     )
   }
