@@ -105,28 +105,9 @@ export class MovieDetailComponent implements OnInit {
   }
 
   onSubmit(f: NgForm): void {
-    var apiStringToQuery = this.getApiStringForMovie(api_settings, f.value.sQFromUser);
-
-    // @ts-ignore
-    this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
-        this.title = api_data.Title; //
-        this.awards = api_data.Awards;//
-        this.boxOffice = api_data.BoxOffice;//
-        this.country = api_data.Country;
-        this.director = api_data.Director; //
-        this.language = api_data.Language;
-        this.metascore = api_data.Metascore;
-        this.plot = api_data.Plot;//
-        this.poster = api_data.Poster;//
-        this.production = api_data.Production;
-        this.rated = api_data.Rated;//
-        this.imdbRating = api_data.imdbRating;
-        this.released = api_data.Released;//
-        this.runtime = api_data.Runtime;//
-        this.writer = api_data.Writer;
-        this.year = api_data.Year;//
-        this.actors = api_data.Actors;//
-      })
+    //var apiStringToQuery = this.getApiStringForMovie(api_settings, f.value.sQFromUser);
+    localStorage.setItem('movie-title', f.value.sQFromUser);
+    this._interactionService.sendMessage(f.value.sQFromUser);
   }
 }
 
