@@ -18,15 +18,9 @@ h2{
 
 .card {
     border: 5px solid lightgrey;
-    width: 400px;
+    max-width: 310px;
     margin: 15px;
 }
-
-.card-deck {
-    position: relative;
-    align-content: center;
-    max-width: 1050px;
-} 
 
 .card-text {
     position: static;
@@ -37,10 +31,16 @@ h2{
 img {
     align-self: center;
     height: 450px;
-    width: 310px;
+    max-width: 310px;
 }
 
 form {
     align-self: center;
 }
 
+/* Top left text */
+.top-left {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+  }

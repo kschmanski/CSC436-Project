@@ -71,6 +71,12 @@ export class MovieSearchComponent implements OnInit {
     localStorage.setItem('movie-title', movieTitle);
     this._interactionService.sendMessage(movieTitle);
   }
+
+  addFave(title: string): void{
+    console.log(title);
+    localStorage.setItem('fave: ' + title, title);
+    this._interactionService.sendMessage(title);
+  }
 }
 
 var api_key = "430ac435";
