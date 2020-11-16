@@ -33,61 +33,21 @@ export class Card {
 export class FavoritesComponent implements OnInit {
   public Cards: Card[] = [];
 
-  constructor(private http: HttpClient, private _interactionService: InteractionService) {
-    /**this._interactionService.message$.subscribe(value => {
-       this.addToFaves(value);
-    });
-    */
+  constructor(private http: HttpClient, private _interactionService: InteractionService) {  }
 
-    }
-
-  ngOnInit(): void { 
-    /** 
-    this._interactionService.message$.subscribe(value => {
-      var temp = value;
-      //localStorage.setItem('title: ' + value, value)
-      this.addToFaves(value);
-   });*/
-
-    for (let i = 0; i < sessionStorage.length; i++){
-    let key = sessionStorage.key(i);
-    if(key.includes('title:')) {
-      let value = sessionStorage.getItem(key);
-      this.addToFaves(value);
-    }
-  }
-
-   /**
-    * this line does take in messages from the search page but
-    * it only keepts the most recent favorited movie and doesn't
-    * add additional movies to the Cards array
-   //this.addToFaves(this._interactionService.getMessage());
-    */
-
-    /** 
-    this._interactionService.message$.subscribe(
-      message => {
-          this.msg = this._interactionService.getMessage();
-          console.log('Movie Search Component received Message: ' + this._interactionService.getMessage());
-          console.log('this.msg is now ' + this.msg);
-          this.addToFaves(this.msg);
+  ngOnInit(): void {
+    for (let i = 0; i < localStorage.length; i++){
+      let key = localStorage.key(i);
+      if(key.includes('title: ')) {
+        let value = localStorage.getItem(key);
+        this.addToFaves(value);
       }
-    )
-  */
-    //this.addToFaves(this._interactionService.getMessage());
-    //this.addToFaves('The Dark Knight');
-    //this.addToFaves('Good Will Hunting');
-    //this.addToFaves('Bajirao Mastani');
+    }
   }
 
-  public removeCards(index){
+  public removeCards(index){ //some issues in this one's logic
+    localStorage.removeItem('title: ' + this.Cards[index].title);
     this.Cards.splice(index, 1);
-    if (this.Cards.length < 1) { 
-      for(let i = 0; i < sessionStorage.length; i++){
-        sessionStorage.removeItem(localStorage.key(i));
-      }
-    }
-    else { sessionStorage.removeItem(sessionStorage.key(index)); }
   }
 
   public addToFaves(title: string) {
@@ -111,6 +71,7 @@ export class FavoritesComponent implements OnInit {
   }
 
   redirectToDetail(movieTitle) {
+    localStorage.setItem('movie-title', movieTitle);
     this._interactionService.sendMessage(movieTitle);
   }
 }
