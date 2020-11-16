@@ -22,7 +22,8 @@
            <img class="card-img-top" src={{card.poster}} alt="Card image cap">
            <div class="card-body">
             <h5 class="card-title">
-                <a href=#{{card.title}} class="movie_page">{{card.title}} ({{card.year}})</a>
+                <a style="cursor:pointer" href="movie-detail" (click)="redirectToDetail(card.title)">
+                {{card.title}} ({{card.year}})</a>
             </h5>
             <p class="card-text">
               <b>Directed By:</b> {{card.director}} <br> <br>

@@ -100,6 +100,11 @@ export class FavoritesComponent implements OnInit {
   private getApiStringForMovie(settings, movie_title_to_search : string) {
     return settings.url_without_movie_title + movie_title_to_search + "&plot=full";
   }
+
+  redirectToDetail(movieTitle) {
+    localStorage.setItem('movie-title', movieTitle);
+    this._interactionService.sendMessage(movieTitle);
+  }
 }
 
 var api_key = "430ac435";
