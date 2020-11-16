@@ -61,38 +61,29 @@ export class MovieDetailComponent implements OnInit {
   constructor(private http: HttpClient, private _interactionService: InteractionService) { }
 
   ngOnInit() {
-    //this.onSubmit1();
-    console.log('in onInit for movie detail');
-     this.getDetails();
-
-
-     console.log(localStorage.getItem('movie-title'));
-
+     this.storeMovieTitleFromSearch();
      this.onSubmit2(localStorage.getItem('movie-title'));
   }
 
-  getDetails() {
-    console.log('getDetails');
+  /**
+   * Stores the movie title from the user's search query into local storage with the key 'movie-title'
+   */
+  storeMovieTitleFromSearch() {
     return     this._interactionService.message$.subscribe(
       message => {
-        console.log('Movie Detail Component received Message: ' + this._interactionService.getMessage());
-        //this.onSubmit2(this._interactionService.getMessage());
         localStorage.setItem('movie-title', this._interactionService.getMessage());
 
       }
     )
   }
 
-  model = new SQ();
-
+  //model = new SQ();
 
   onSubmit2(title): void {
-    console.log('on submit 2 ' + title);
     var apiStringToQuery = this.getApiStringForMovie(api_settings, title);
 
     // @ts-ignore
     this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
-      console.log(api_data);
       this.title = api_data.Title; //
       this.awards = api_data.Awards;//
       this.boxOffice = api_data.BoxOffice;//
@@ -105,44 +96,12 @@ export class MovieDetailComponent implements OnInit {
       this.production = api_data.Production;
       this.rated = api_data.Rated;//
       this.imdbRating = api_data.imdbRating;
-      //this.rotenRating = api_data.Ratings[1];
-      //this.metacritics = api_data.Ratings[2];
       this.released = api_data.Released;//
       this.runtime = api_data.Runtime;//
       this.writer = api_data.Writer;
       this.year = api_data.Year;//
       this.actors = api_data.Actors;//
-      //this.result = api_data.Search;
     })
-  }
-
-  onSubmit1(): void {
-    var apiStringToQuery = this.getApiStringForMovie(api_settings, "The Dark Knight");
-
-    // @ts-ignore
-    this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
-        console.log(api_data);
-        this.title = api_data.Title; //
-        this.awards = api_data.Awards;//
-        this.boxOffice = api_data.BoxOffice;//
-        this.country = api_data.Country;
-        this.director = api_data.Director; //
-        this.language = api_data.Language;
-        this.metascore = api_data.Metascore;
-        this.plot = api_data.Plot;//
-        this.poster = api_data.Poster;//
-        this.production = api_data.Production;
-        this.rated = api_data.Rated;//
-        this.imdbRating = api_data.imdbRating;
-        //this.rotenRating = api_data.Ratings[1];
-        //this.metacritics = api_data.Ratings[2];
-        this.released = api_data.Released;//
-        this.runtime = api_data.Runtime;//
-        this.writer = api_data.Writer;
-        this.year = api_data.Year;//
-        this.actors = api_data.Actors;//
-        //this.result = api_data.Search;
-      })
   }
 
   onSubmit(f: NgForm): void {
