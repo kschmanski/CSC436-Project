@@ -45,7 +45,7 @@ export class FavoritesComponent implements OnInit {
     }
   }
 
-  public removeCards(index){ //some issues in this one's logic
+  public removeCards(index) {
     localStorage.removeItem('title: ' + this.Cards[index].title);
     this.Cards.splice(index, 1);
   }
@@ -85,16 +85,4 @@ var api_settings = {
   "url": "http://www.omdbapi.com/?apikey=" + api_key + "&t=" + api_title + "&plot=full", //not currently used but leaving it here for documentation
   "url_without_movie_title": "http://www.omdbapi.com/?apikey=" + api_key + "&t=",
   "method": "GET",
-}
-
-var settings_old = {
-  "async": true,
-  "crossDomain": true,
-  //"url": "https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=Avengers%20Endgame",
-  "url": "https://movie-database-imdb-alternative.p.rapidapi.com/?r=json&s=Good%20Will%20Hunting",
-  "method": "GET",
-  "headers": {
-    "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
-    "x-rapidapi-key": "195b12d6f0mshe52a785c6bbf16bp196bfbjsn7b9cebbaeae6"
-  }
 }
