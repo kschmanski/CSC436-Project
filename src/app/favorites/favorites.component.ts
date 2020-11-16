@@ -42,12 +42,20 @@ export class FavoritesComponent implements OnInit {
 
     }
 
-  ngOnInit(): void {
+  ngOnInit(): void { 
     this._interactionService.message$.subscribe(value => {
       var temp = value;
+      localStorage.setItem('title: ' + value, value)
       this.addToFaves(value);
    });
 
+    for (let i = 0; i < localStorage.length; i++){
+    let key = localStorage.key(i);
+    let value = localStorage.getItem(key);
+    this.addToFaves(value);
+  }
+
+   this.addToFaves(this._interactionService.getMessage());
    /**
     * this line does take in messages from the search page but
     * it only keepts the most recent favorited movie and doesn't
@@ -79,10 +87,11 @@ export class FavoritesComponent implements OnInit {
 
   public removeCards(index){
     this.Cards.splice(index, 1);
+    localStorage.removeItem(localStorage.key(index));
   }
 
   public addToFaves(title: string) {
-    var card = new Card();
+    let card = new Card();
     var apiStringToQuery = this.getApiStringForMovie(api_settings, title);
         // @ts-ignore
     this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
@@ -102,7 +111,7 @@ export class FavoritesComponent implements OnInit {
   }
 
   redirectToDetail(movieTitle) {
-    localStorage.setItem('movie-title', movieTitle);
+
     this._interactionService.sendMessage(movieTitle);
   }
 }

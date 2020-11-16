@@ -74,6 +74,7 @@ export class MovieSearchComponent implements OnInit {
 
   addFave(title: string): void{
     console.log(title);
+    localStorage.setItem('title: ' + title, title);
     this._interactionService.sendMessage(title);
   }
 }
