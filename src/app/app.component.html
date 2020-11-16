@@ -1,30 +1,17 @@
 
-<nav class="navbar navbar-expand-sm bg-primary navbar-dark fixed-top">
-  <ul class="nav navbar-nav navbar-left">
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+  <ul class="navbar-nav">
 
     <!-- maybe we could add a link to the home page here? -->
     <div class = "navbar-header">
       <!--    Opens HomePage in new tab
-        <a class = "navbar-brand" href='' target="_blank">Movie App</a> 
+        <a class = "navbar-brand" href='' target="_blank">Movie App</a>
       -->
-      <a class="navbar-brand" [routerLink]="['/home']">Movie App</a>
+      <a class="navbar-brand" [routerLink]="['/home']">Movella</a>
     </div>
 
-    
-    <!-- <li class="nav-item dropdown">
-      <a class="nav-link dropdown-toggle" href="#" id="hrefDropdown" role="button" data-toggle="dropdown">
-        Menu
-      </a>
-      <div class="dropdown-menu" aria-labelledby="hrefDropdown">
-       <a class="dropdown-item" href="search-movie">Search Movie</a>
-       <a class="dropdown-item" [routerLink]="['/movie-detail']">Movie Detail</a>
-       <a class="dropdown-item" [routerLink]="['/forum']">Forum</a>
-       <a class="dropdown-item" href="favorites">Favorites</a>
-        <a class="dropdown-item" href="todo">Todo</a>
-      </div>
-    </li> -->
 
-    <a class="nav-link" [routerLink]="['/search-movie']">Search Movie</a>
+    <a class="nav-link" [routerLink]="['/search-movie']">Search Movies</a>
     <a class="nav-link" [routerLink]="['/movie-detail']">Movie Detail</a>
     <a class="nav-item nav-link" [routerLink]="['/forum']">Forum</a>
     <a class="nav-link" [routerLink]="['/favorites']">Favorites</a>

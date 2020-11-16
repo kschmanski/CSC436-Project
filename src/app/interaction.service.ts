@@ -7,6 +7,7 @@ import {Subject} from 'rxjs';
 export class InteractionService {
 
   message: string;
+  messages = [];
 
   private _messageSource = new Subject<string>();
   message$ = this._messageSource.asObservable();
@@ -20,6 +21,7 @@ export class InteractionService {
    */
   sendMessage(inputMessage: string) {
     this.message = inputMessage;
+    this.messages.push(inputMessage);
     this._messageSource.next(inputMessage);
   }
 

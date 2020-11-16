@@ -1,14 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import {Component, OnInit} from '@angular/core';
-
 import { NgModule } from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {NgForm, FormControl} from '@angular/forms';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import {AppComponent} from "../app.component";
 import { InteractionService } from '../interaction.service';
-
 
 export class SearchQuery {
   //the string the user passed in from the search bar
@@ -32,7 +30,6 @@ export class SearchQuery {
   styleUrls: ['./movie-search.component.css']
 })
 
-
 export class MovieSearchComponent implements OnInit {
   /**
    * Returns the API query string to call, based on the movie query string supplied by the user.
@@ -46,17 +43,12 @@ export class MovieSearchComponent implements OnInit {
 
   constructor(private http: HttpClient, private _interactionService: InteractionService) { }
 
+  name = new FormControl('');
   result: any;
-  msg: any;
 
   ngOnInit() {
-    this._interactionService.message$.subscribe(
-      message => {
-          this.msg = this._interactionService.message$;
-          console.log('Movie Search Component received Message: ' + this._interactionService.getMessage());
-      }
-    )
   }
+
 
   model = new SearchQuery();
 
@@ -65,10 +57,25 @@ export class MovieSearchComponent implements OnInit {
 
     // @ts-ignore
     this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
-        console.log(api_data);
-        console.log(api_data[0]);
         this.result = api_data.Search;
       })
+
+  }
+
+  /**
+   * Stores the incoming movie title from the search page and sends it to this._interactionService
+   *
+   * @param movieTitle title of the movie coming from the search page.
+   */
+  redirectFromSearchToDetail(movieTitle) {
+    localStorage.setItem('movie-title', movieTitle);
+    this._interactionService.sendMessage(movieTitle);
+  }
+
+  addFave(title: string): void{
+    console.log(title);
+    localStorage.setItem('fave: ' + title, title);
+    this._interactionService.sendMessage(title);
   }
 }
 

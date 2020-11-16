@@ -1,0 +1,100 @@
+<div class="btn-group btn-group-toggle text-align-center" data-toggle="buttons">
+    <label class="btn btn-light active">
+      <input type="radio" name="options" id="option1" autocomplete="off" checked> Most Recent
+    </label>
+    <label class="btn btn-light">
+      <input type="radio" name="options" id="option2" autocomplete="off"> Most Viewed
+    </label>
+    <label class="btn btn-light">
+      <input type="radio" name="options" id="option3" autocomplete="off"> Most Commented
+    </label>
+</div>
+
+
+
+<!-- <button (click)="addNewPost()" class="btn btn-light">
+    New Post
+</button> -->
+
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#postModal">New Post</button>
+
+<div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="postModalLabel">New Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="postForm">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Title:</label>
+            <input type="text" class="form-control" id="form-content" placeholder="Title" #postTitle require>
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Body:</label>
+            <textarea class="form-control" id="form-content" placeholder="Write Message..." #postContent require></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" (click)="addNewPost(postTitle.value, postContent.value)" class="btn btn-primary" data-dismiss="modal">Submit</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+    $('#postModal').on('hidden.bs.modal', function () {
+    // $(this).find('input,textarea').trigger('reset');
+    $(this).find('input')[0].reset();
+});
+</script>
+
+<app-forum-post (newPostEvent)="addNewPost(test)"></app-forum-post>
+
+    <!--Tasks added repeated divisions-->
+    <div *ngFor="let x of items; let index = index;" class="row mt-1">
+
+        <div class="container" style=" padding-top: 2%; padding: 3%;">
+            <div class="row">
+                <div class="col border bg-light d-flex justify-content-center align-items-center">
+                    Username
+                </div>
+                <div class="col-7 bg-light">
+                    <div class="row">
+                        <div class="col justify-content-center">
+                            <a href=""> {{x.title}}</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col justify-content-center">
+                            <p  style="font-size: small;"> {{x.content}} </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col bg-light">
+                    <div class="row bg-light border" style="height:33%">
+                        <div class="col d-flex justify-content-center">
+                            {{x.comments}} Comments
+                        </div>
+                    </div>
+                    <div class="row bg-light border" style="height: 33%;">
+                        <div class="col d-flex justify-content-center">
+                            {{x.views}} Views
+                        </div>
+                    </div>
+                    <div class="row bg-light border" style="height: 33%;">
+                        <div class="col d-flex justify-content-center">
+                            1hr ago
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+

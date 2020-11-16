@@ -28,16 +28,15 @@
     <div class="page-header">
         <h1>Movies Search<small></small></h1>
     </div>
-    <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
+    <form #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)" ng-init="onReset(searchForm)">
     <div style="margin:12px 12px 12px 12px">
         <h2 style="display:inline">Search: </h2>
-        <input class="form-control" [(ngModel)]="model.searchQueryFromUser" name ="searchQueryFromUser" style="width:auto; display: inline;">
-      <button class="btn btn-success form-control" style="width:auto;">Search!</button>
+        <input class="form-control"  [(ngModel)]="model.searchQueryFromUser" name ="searchQueryFromUser" style="width:auto; display: inline;">
+      <button class="btn btn-success form-control" id="search" style="width:auto;">Search!</button>
     </div>
-
       <h2 style="margin:12px 12px 12px 12px">Results:</h2>
 
- <table class="table table-hover" style="margin:24px 24px 24px 24px">
+ <table class="table table-hover" onload="onReset(searchForm)" style="margin:24px 24px 24px 24px">
     <thead>
         <tr>
             <th scope="col">Movie Title</th>
@@ -48,17 +47,16 @@
     <tbody>
         <tbody>
             <tr *ngFor="let resultObj of result">
-                <td><a style="cursor:pointer">
+                <td><a style="cursor:pointer" href="movie-detail" (click)="redirectFromSearchToDetail(resultObj.Title)">
                     {{ resultObj.Title}}
                 </a></td>
 
-                <td><a style="cursor:pointer">
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="red"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path fill-rule="evenodd"
-                                    d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z" />
-                        </svg>
-                </a></td>
+                <td><button (click)="addFave(resultObj.Title)" type="button" class="btn btn-outline-danger">
+                    <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-heart-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"/>
+                    </svg>
+                    </button>
+                </td>
             </tr>
         </tbody>
 

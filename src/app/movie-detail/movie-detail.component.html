@@ -1,50 +1,86 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Movella</h1>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Movie Detail Page</title>
-</head>
+      <form class="form-inline" #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input class="form-control form-control-lg w-75" [(ngModel)]="sQFromUser" name ="sQFromUser" placeholder="Search for a Movie"
+            aria-label="Search">
+        <!--<button class="btn btn-primary ml-3 btn-lg" role="button">Search</button>-->
+        <a (click)="onSubmit(searchForm)" class="btn btn-primary ml-3 btn-lg">Search</a>
+      </form>
 
-<body>
-<!-- Body -->
-<section class="w3-container w3-content w3-center" style="max-width:600px">
-  <h2 class="w3-wide">Good Will Hunting <small>(1993)</small> </h2>
+    </div>
+  </div>
+</div>
 
-  <p class="w3-justify">
-    Will Hunting, a janitor at M.I.T., has a gift for mathematics, but needs help from a psychologist to find direction in his life.  </p>
-  <img src="/assets/images/goodwillhunting.jpg" alt="Matt Damon and Robin Williams share a laugh in front of the blackboard.">
-</section>
+<br>
+<br>
 
 
-<section class="w3-row-padding w3-center w3-light-grey">
-  <article class="w3-third">
-    <p>Director:</p>
-  </article>
+<div class = "container">
+  <div class="row">
 
-  <article class="w3-third">
-    <p>Writers:</p>
-  </article>
+    <div class="col-lg-4">
+      <img src={{poster}} class="img-fluid" alt="Responsive image">
+      <div class="top-left">
+        <button (click)="addFave(title)" type="button" class="btn btn-light">
+          <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bookmark-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v13.5a.5.5 0 0 1-.777.416L8 13.101l-5.223 2.815A.5.5 0 0 1 2 15.5V2zm2-1a1 1 0 0 0-1 1v12.566l4.723-2.482a.5.5 0 0 1 .554 0L13 14.566V2a1 1 0 0 0-1-1H4z"/>
+            <path fill-rule="evenodd" d="M8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+          </svg>
+          </button>
+      </div>
+    </div>
 
-  <article class="w3-third">
-    <p>Stars:</p>
-  </article>
-</section>
+    <div class="col-8">
 
-<section class="w3-row-padding w3-center w3-light-grey">
-  <h2 class="w3-wide">Cast</h2>
-  <p class="cast">This is where the cast goes</p>
-</section>
+      <div class="row no-gutters">
+        <div class="d-flex justify-content-between">
+          <h3><b>{{title}}</b> ({{year}})</h3>
+          <h6> [{{rated}}]</h6>
+        </div>
+      </div>
 
-<section class="w3-row-padding w3-center w3-light-grey">
-  <h2 class="w3-wide">Storyline</h2>
-  <p class="cast">This is where the storyline goes</p>
-</section>
+      <div class="row no-gutters">
+        <p>IMDb Rating: {{imdbRating}}</p>
+      </div>
 
-<section class="w3-row-padding w3-center w3-light-grey">
-  <h2 class="w3-wide">Trivia</h2>
-  <p class="cast">This is where the Trivia goes</p>
-</section>
+      <div class="row no-gutters">
+        <h5><b>Plot</b></h5>
+        <p>{{plot}}</p>
+      </div>
+      <hr>
 
-</body>
-</html>
+      <div class="row no-gutters">
+
+        <div class="col">
+          <small><b>Director: </b> {{director}}</small>
+          <br>
+          <small><b>Actors: </b> {{actors}}</small>
+          <br>
+          <small><b>Released: </b> {{released}}</small>
+          <br>
+          <small><b>Runtime: </b> {{runtime}}</small>
+        </div>
+
+        <div class="col">
+          <small><b>Awards: </b> {{awards}}</small>
+          <br>
+          <small><b>Box Office: </b> {{boxOffice}}</small>
+          <br>
+          <small><b>Language: </b> {{language}}</small>
+          <br>
+          <small><b>Production: </b> {{production}}</small>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<br>
+<br>
