@@ -37,7 +37,6 @@ export class MovieDetailComponent implements OnInit {
   boxOffice: string;
   country: string;
   director: string;
-  genre: string;
   language: string;
   metascore: string;
   plot: string;
@@ -45,8 +44,6 @@ export class MovieDetailComponent implements OnInit {
   production: string;
   rated: string;
   imdbRating: string;
-  rotenRating: string;
-  metacritics: string;
   released: string;
   runtime: string;
   writer: string;
