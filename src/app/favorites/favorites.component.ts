@@ -38,9 +38,11 @@ export class FavoritesComponent implements OnInit {
   ngOnInit(): void {
     for (let i = 0; i < localStorage.length; i++){
       let key = localStorage.key(i);
-      if(key.includes('fave: ')) {
+      if (key.includes('fave: ')) {
         let value = localStorage.getItem(key);
-        this.addToFaves(value);
+        if ( value !== 'undefined' ) {
+          this.addToFaves(value);
+        }
       }
     }
   }

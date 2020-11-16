@@ -127,7 +127,7 @@ export class MovieDetailComponent implements OnInit {
   }
 
   addFave(title: string): void{
-    console.log(title);
+    //console.log(title);
     localStorage.setItem('fave: ' + title, title);
     this._interactionService.sendMessage(title);
   }
