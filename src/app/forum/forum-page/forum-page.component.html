@@ -29,24 +29,31 @@
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form id="postForm">
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Title:</label>
-            <input type="text" class="form-control" placeholder="Title" #postTitle>
+            <input type="text" class="form-control" id="form-content" placeholder="Title" #postTitle require>
           </div>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Body:</label>
-            <textarea class="form-control" id="body-text" placeholder="Write Message..." #postContent></textarea>
+            <textarea class="form-control" id="form-content" placeholder="Write Message..." #postContent require></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="submit" (click)="addNewPost(postTitle.value, postContent.value)" class="btn btn-primary" data-dismiss="modal">Submit</button>
           </div>
         </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button (click)="addNewPost(postTitle.value, postContent.value)" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+    $('#postModal').on('hidden.bs.modal', function () {
+    // $(this).find('input,textarea').trigger('reset');
+    $(this).find('input')[0].reset();
+});
+</script>
 
 <app-forum-post (newPostEvent)="addNewPost(test)"></app-forum-post>
 

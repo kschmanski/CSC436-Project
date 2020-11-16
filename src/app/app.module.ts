@@ -7,12 +7,12 @@ import { RouterModule, Routes } from '@angular/router';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import {FormsModule} from '@angular/forms';
 import { MovieSearchComponent } from './movie-search/movie-search.component';
-import { ForumPageComponent } from './forum-page/forum-page.component';
+import { ForumPageComponent } from './forum/forum-page/forum-page.component';
 import { FavoritesComponent } from './favorites/favorites.component';
 import { HomeComponent } from './home/home.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InteractionService } from './interaction.service';
-import { ForumPostComponent } from './forum-post/forum-post.component';
+import { ForumPostComponent } from './forum/forum-post/forum-post.component';
 
 const routes: Routes = [
   {path: 'movie-detail', component: MovieDetailComponent},
