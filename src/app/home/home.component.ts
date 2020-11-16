@@ -26,6 +26,14 @@ export class SQ {
   ],
   bootstrap: [ AppComponent ]
 })
+
+class Movie {
+  title: string;
+  year: string;
+  director: string;
+  actors: string;
+}
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -35,13 +43,40 @@ export class SQ {
 
 export class HomeComponent implements OnInit {
   public sQFromUser: string = '';
+  suggestions = [];
+  titles: Array<string> = ['Spanglish',
+                            'Train to Busan',
+                            '3 Idiots',
+                            'Harry Potter and the Sorcerer\'s Stone',
+                            'Home Alone'
+                          ];
 
-  constructor(private _interactionService: InteractionService) { }
+  constructor(private http: HttpClient, private _interactionService: InteractionService) { }
 
   ngOnInit() {
+    for(let i=0; i < this.titles.length; i++){
+      this.suggest(this.titles[i]);
+    }
   }
 
+  suggest(title: string): void {
+    let movie = new Movie();
+    var apiStringToQuery = this.getApiStringForMovie(api_settings, title);
+        // @ts-ignore
+    this.http.get<any>(apiStringToQuery, api_settings).subscribe(api_data => {
+          console.log(api_data);
+          movie.title = api_data.Title;
+          movie.year = api_data.Year;
+          movie.actors = api_data.Actors;
+          movie.director = api_data.Director;
+        });
+    this.suggestions.push(movie);
+    console.log(this.suggestions);
+  }
 
+  private getApiStringForMovie(settings, movie_title_to_search : string) {
+    return settings.url_without_movie_title + movie_title_to_search + "&plot=full";
+  }
 }
 
 var api_key = "430ac435";
@@ -53,16 +88,4 @@ var api_settings = {
   "url": "http://www.omdbapi.com/?apikey=" + api_key + "&t=" + api_title + "&plot=full", //not currently used but leaving it here for documentation
   "url_without_movie_title": "http://www.omdbapi.com/?apikey=" + api_key + "&t=",
   "method": "GET",
-}
-
-var settings_old = {
-  "async": true,
-  "crossDomain": true,
-  //"url": "https://movie-database-imdb-alternative.p.rapidapi.com/?page=1&r=json&s=Avengers%20Endgame",
-  "url": "https://movie-database-imdb-alternative.p.rapidapi.com/?r=json&s=Good%20Will%20Hunting",
-  "method": "GET",
-  "headers": {
-    "x-rapidapi-host": "movie-database-imdb-alternative.p.rapidapi.com",
-    "x-rapidapi-key": "195b12d6f0mshe52a785c6bbf16bp196bfbjsn7b9cebbaeae6"
-  }
 }
