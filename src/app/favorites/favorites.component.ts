@@ -49,7 +49,7 @@ export class FavoritesComponent implements OnInit {
       this.addToFaves(value);
    });
 
-    for (let i = 0; i < localStorage.length; i++){
+    for (let i = 1; i < localStorage.length; i++){
     let key = localStorage.key(i);
     let value = localStorage.getItem(key);
     this.addToFaves(value);
@@ -87,7 +87,8 @@ export class FavoritesComponent implements OnInit {
 
   public removeCards(index){
     this.Cards.splice(index, 1);
-    localStorage.removeItem(localStorage.key(index));
+    if (this.Cards.length < 1) { localStorage.clear; }
+    else { localStorage.removeItem(localStorage.key(index)); }
   }
 
   public addToFaves(title: string) {
