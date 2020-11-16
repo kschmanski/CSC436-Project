@@ -38,3 +38,9 @@ form {
     align-self: center;
 }
 
+/* Top left text */
+.top-left {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+  }
