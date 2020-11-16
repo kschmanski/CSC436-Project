@@ -27,14 +27,14 @@
             </button>
            </div></div>
            <div class="card-body">
-            <h5 class="card-title">
-                <a style="cursor:pointer" href="movie-detail" (click)="redirectToDetail(card.title)">
-                {{card.title}} ({{card.year}})</a>
-            </h5>
-            <p class="card-text">
-              <b>Directed By:</b> {{card.director}} <br> <br>
-              <b>Starring:</b> {{card.actors}}
-            </p>    
+            <a style="cursor:pointer" href="movie-detail" (click)="redirectToDetail(card.title)" class="list-group-item list-group-item-action flex-column align-items-start">          
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-2 h4">{{card.title}}</h5>
+                <small>{{card.year}}</small>
+              </div>
+            <small><b>Director:</b> {{card.director}}</small><br>
+            <small><b>Featuring:</b> {{card.actors}}</small>
+            </a>  
           </div>
         </div>
       </div>
