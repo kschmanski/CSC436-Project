@@ -94,6 +94,12 @@ export class HomeComponent implements OnInit {
       this._interactionService.sendMessage
   }
 
+  onSubmit(f: NgForm): void {
+    //var apiStringToQuery = this.getApiStringForMovie(api_settings, f.value.sQFromUser);
+    localStorage.setItem('movie-title', f.value.sQFromUser);
+    this._interactionService.sendMessage(f.value.sQFromUser);
+  }
+
 }
 
 var api_key = "430ac435";
