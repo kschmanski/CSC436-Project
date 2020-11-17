@@ -43,11 +43,11 @@ export class HomeComponent implements OnInit {
   public sQFromUser: string = '';
   model = new SQ();
   suggestions = [];
-  titles: Array<string> = ['Spanglish',
-                            'Train to Busan',
-                            '3 Idiots',
-                            'Harry Potter and the Sorcerer\'s Stone',
-                            'Home Alone'
+  titles: Array<string> = [ 'Inception',
+                            'Happy Gilmore',
+                            'The Terminator',
+                            'The Lord of the Rings: The Fellowship of the Ring',
+                            'Harry Potter and the Sorcerer\'s Stone'
                           ];
 
   constructor(private http: HttpClient, private _interactionService: InteractionService) { }
