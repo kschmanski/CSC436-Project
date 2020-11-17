@@ -4,6 +4,14 @@
   <div class="row">
     <div class="col">
       <h1>Movella</h1>
+
+      <form class="form-inline" #searchForm="ngForm" (ngSubmit)="onSubmit(searchForm)">
+        <i class="fas fa-search" aria-hidden="true"></i>
+        <input class="form-control form-control-lg w-75" [(ngModel)]="sQFromUser" name ="sQFromUser" placeholder="Search for a Movie"
+            aria-label="Search">
+        <!--<button class="btn btn-primary ml-3 btn-lg" role="button">Search</button>-->
+        <a href="search-movie" (click)="onSubmit(searchForm)" class="btn btn-primary ml-3 btn-lg">Search</a>
+      </form>
     </div>
   </div>
 </div>
@@ -79,7 +87,7 @@
           <!-- Text -->
           <p class="card-text">Will Hunting, a janitor at M.I.T., has a gift for mathematics, but needs help from a psychologist to find direction in his life..</p>
           <!-- Button -->
-          <a href="#" class="btn btn-primary" href="movie-detail">Details</a>
+          <a href="movie-detail" class="btn btn-primary" (click)="redirectToDetail('good will hunting')">Details</a>
         </div>
       </div>
 

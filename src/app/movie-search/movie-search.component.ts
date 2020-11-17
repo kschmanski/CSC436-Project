@@ -31,6 +31,7 @@ export class SearchQuery {
 })
 
 export class MovieSearchComponent implements OnInit {
+  loadString = '';
   /**
    * Returns the API query string to call, based on the movie query string supplied by the user.
    *
@@ -54,6 +55,7 @@ export class MovieSearchComponent implements OnInit {
       console.log(localStorage.getItem('movie-title'));
       this.displayMovieResultsFromUserSearchinDetails(localStorage.getItem('movie-title'));
     }
+    this.loadString = localStorage.getItem('movie-title');
     console.log('internal storage: ' + localStorage.getItem('movie-title'));
   }
 
