@@ -17,6 +17,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './login/login.component';
 import { ForumPostComponent } from './forum/forum-post/forum-post.component';
 import { TheatersComponent } from './theaters/theaters.component';
+import { AgmCoreModule } from '@agm/core';
 
 const routes: Routes = [
   {path: 'movie-detail', component: MovieDetailComponent},
@@ -49,6 +50,9 @@ const routes: Routes = [
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAC9PRQfTqQD6F5BdlbzFRF2wnuf_WdkTM'
+    })
   ],
   providers: [InteractionService],
   bootstrap: [AppComponent]
