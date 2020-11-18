@@ -1,7 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ForumService } from './../forum.service'
 import { Subscription } from 'rxjs';
-import { Post } from './../forum-post/forum-post.component'
+import { Comment } from './../forum-post/forum-post.component'
+
+export class Post {
+  username : string;
+  title : string;
+  content : string;
+  views : number;
+  comments : Comment[];
+  commentsNum : number;
+  createdDate : Date;
+
+
+  constructor(title : string, body : string){
+    this.username = "username";
+    this.title = title;
+    this.content = body;
+    this.views = 0;
+    this.comments = [];
+    this.commentsNum = this.comments.length;
+    this.createdDate = new Date();
+  }
+};
 
 @Component({
   selector: 'app-forum-page',
@@ -10,7 +31,6 @@ import { Post } from './../forum-post/forum-post.component'
 })
 
 export class ForumPageComponent implements OnInit {
-  // items: string[] = [];
   items: Post[] = [];
   private sub = new Subscription();
 
@@ -18,17 +38,22 @@ export class ForumPageComponent implements OnInit {
   constructor(private service: ForumService) { }
 
   ngOnInit(): void {
-    this.sub = this.service.getList().subscribe(post => this.items = post);
+    this.sub = this.service.getPostList().subscribe(post => this.items = post);
   }
 
   public addNewPost(title: string, body: string){
     let newPost : Post = new Post(title, body);
-    this.service.add(newPost);
-    console.log("New Post!");
+    this.service.addPost(newPost);
+    // console.log("New Post!");
   }
 
   public deletePost(index: number){
-    this.service.delete(index);
+    this.service.deletePost(index);
+  }
+
+  public sendPost(post : Post){
+    post.views++;
+    this.service.setPost(post);
   }
 
 }

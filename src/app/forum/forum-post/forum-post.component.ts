@@ -1,22 +1,16 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Post } from '../forum-page/forum-page.component';
+import { ForumService } from '../forum.service';
+import { Subscription } from 'rxjs';
 
-let counter: number = 0;
-
-export class Post {
+export class Comment {
   username : string;
-  title : string;
-  content : string;
-  views : number;
-  comments : number;
+  commentText : string;
   createdDate : Date;
 
-
-  constructor(title : string, body : string){
+  constructor(comment : string){
     this.username = "username";
-    this.title = title;
-    this.content = body;
-    this.views = 0;
-    this.comments = 55;
+    this.commentText = comment;
     this.createdDate = new Date();
   }
 };
@@ -27,26 +21,29 @@ export class Post {
   styleUrls: ['./forum-post.component.css']
 })
 export class ForumPostComponent implements OnInit {
-  usernname : string;
-  title : string;
-  content : string;
-  views : number;
-  comments : number;
-  createdDate : Date;
+  forumPost : Post;
+  private sub = new Subscription();
+  // @Output() newPostEvent = new EventEmitter<number>();
 
-  @Output() newPostEvent = new EventEmitter<number>();
-
-  constructor() { }
+  constructor(private service: ForumService) { }
 
   ngOnInit():void {
+    this.sub = this.service.getPost().subscribe(post => this.forumPost = post);
+    // console.log(this.forumPost);
   }
 
-  public newPost;
+  public addNewComment(comment : string){
+    let newcomm : Comment = new Comment(comment);
+    this.forumPost.comments.push(newcomm);
+    this.forumPost.commentsNum++;
+  }
+
+  public newComment;
 
 
   public addToList() {
-    this.newPost.emit(this.newPost);
-    this.newPost = "";
+    this.newComment.emit(this.newComment);
+    this.newComment = "";
   }
 
 }

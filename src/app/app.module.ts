@@ -21,6 +21,7 @@ const routes: Routes = [
   {path: 'movie-detail', component: MovieDetailComponent},
   {path: 'search-movie', component: MovieSearchComponent},
   {path: 'forum', component: ForumPageComponent, canActivate: [AuthGuard]},
+  {path: 'post', component: ForumPostComponent, canActivate: [AuthGuard]},
   {path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},

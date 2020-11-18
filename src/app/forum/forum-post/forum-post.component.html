@@ -1,1 +1,85 @@
-<!-- <p>forum-post works!</p> -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#commentModal">Add Comment</button>
+
+<div class="modal fade" id="commentModal" tabindex="-1" role="dialog" aria-labelledby="commentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="commentModalLabel">New Comment</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form id="commentForm">
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">Comment:</label>
+              <textarea class="form-control" id="form-content" placeholder="Write Comment..." #commentContent require></textarea>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" (click)="addNewComment(commentContent.value)" class="btn btn-primary" data-dismiss="modal">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="container" style=" padding-top: 2%; padding: 3%;">
+    <div class="row">
+        <div class="col border bg-light d-flex justify-content-center align-items-center">
+            Username
+        </div>
+        <div class="col-7 bg-light">
+            <div class="row">
+                <div class="col justify-content-center">
+                    {{forumPost.title}}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col justify-content-center">
+                    <p  style="font-size: small;"> {{forumPost.content}} </p>
+                </div>
+            </div>
+        </div>
+        <div class="col bg-light">
+            <div class="row bg-light border" style="height:33%">
+                <div class="col d-flex justify-content-center">
+                    {{forumPost.commentsNum}} Comments
+                </div>
+            </div>
+            <div class="row bg-light border" style="height: 33%;">
+                <div class="col d-flex justify-content-center">
+                    {{forumPost.views}} Views
+                </div>
+            </div>
+            <div class="row bg-light border" style="height: 33%;">
+                <div class="col d-flex justify-content-center">
+                    {{forumPost.createdDate.toLocaleString()}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!--Tasks added repeated divisions-->
+    <div *ngFor="let x of forumPost.comments; let index = index;" class="row mt-1">
+
+        <div class="container" style=" padding-top: 2%; padding: 3%;">
+            <div class="row">
+                <div class="col border bg-light d-flex justify-content-center align-items-center">
+                    {{x.username}}
+                </div>
+                <div class="col-7 bg-light">
+                    <div class="row">
+                        <div class="col justify-content-center">
+                            <p  style="font-size: small;"> {{x.commentText}} </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col border bg-light d-flex justify-content-center align-items-center">
+                    {{x.createdDate.toLocaleString()}}
+                </div>
+            </div>
+        </div>
+    </div>

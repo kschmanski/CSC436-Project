@@ -48,14 +48,15 @@
   </div>
 </div>
 
-<script>
+<!--This is intended to clear the input in the popup menu. It's not working-->
+<!-- <script>
     $('#postModal').on('hidden.bs.modal', function () {
     // $(this).find('input,textarea').trigger('reset');
     $(this).find('input')[0].reset();
 });
-</script>
+</script> -->
 
-<app-forum-post (newPostEvent)="addNewPost(test)"></app-forum-post>
+<!-- <app-forum-post (newPostEvent)="addNewPost(test)"></app-forum-post> -->
 
     <!--Tasks added repeated divisions-->
     <div *ngFor="let x of items; let index = index;" class="row mt-1">
@@ -68,7 +69,7 @@
                 <div class="col-7 bg-light">
                     <div class="row">
                         <div class="col justify-content-center">
-                            <a href=""> {{x.title}}</a>
+                            <a (click)='sendPost(x)' [routerLink]="['/post']"> {{x.title}}</a>
                         </div>
                     </div>
                     <div class="row">
@@ -80,7 +81,7 @@
                 <div class="col bg-light">
                     <div class="row bg-light border" style="height:33%">
                         <div class="col d-flex justify-content-center">
-                            {{x.comments}} Comments
+                            {{x.commentsNum}} Comments
                         </div>
                     </div>
                     <div class="row bg-light border" style="height: 33%;">
@@ -90,7 +91,7 @@
                     </div>
                     <div class="row bg-light border" style="height: 33%;">
                         <div class="col d-flex justify-content-center">
-                            1hr ago
+                            {{x.createdDate.toLocaleString()}}
                         </div>
                     </div>
                 </div>

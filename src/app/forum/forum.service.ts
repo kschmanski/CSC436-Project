@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { Post } from './forum-post/forum-post.component'
+import { Post } from './forum-page/forum-page.component'
 
 
 @Injectable({
@@ -9,22 +9,29 @@ import { Post } from './forum-post/forum-post.component'
 export class ForumService {
 
   posts : Post[] = [];
+  currentPost : Post;
 
   constructor() { }
 
-  add(post){
+  addPost(post){
     this.posts.push(post);
-    console.log(this.posts.length);
-    console.log(this.posts);
   }
 
-  delete(index: number){
+  deletePost(index: number){
     // do I want to delete posts?
   }
 
-  getList(): Observable<Post[]> {
+  getPostList(): Observable<Post[]> {
     // which one of these is right?
     return of(this.posts);
     // return this.posts;
+  }
+
+  setPost(post){
+    this.currentPost = post;
+  }
+
+  getPost(): Observable<Post> {
+    return of(this.currentPost);
   }
 }
