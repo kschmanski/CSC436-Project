@@ -28,7 +28,7 @@
 
       <div class="list-group">
         <div class="suggestions" *ngFor="let movie of suggestions">
-          <a style="cursor:pointer" href="movie-detail" (click)="redirectToDetail(movie.title)" class="list-group-item list-group-item-action flex-column align-items-start">          
+          <a style="cursor:pointer" href="movie-detail" (click)="redirectToDetail(movie.title)" class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-2 h4">{{movie.title}}</h5>
               <small>{{movie.year}}</small>
@@ -37,7 +37,7 @@
           <small>Featuring: {{movie.actors}}</small>
           </a>
         </div>
-      </div>      
+      </div>
     </div>
 
 
@@ -92,7 +92,25 @@
       </div>
 
     </div>
+    
+    <!--Tiles for group members -->
+    <div class="container">
+      <div class="row">
 
+        <div class="col-md-5">
+          <h4>Group Members</h4>
 
+          <div class="list-group">
+            <div class="suggestions" *ngFor="let member of group_members">
+              <a style="cursor:pointer" class="list-group-flush list-group-item-action flex-column align-items-start">
+                <div class="d-flex w-50 justify-content-between">
+                  <h5 class="mb-2 h6">{{member}}</h5>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
   </div>
 </div>
+
+  </div> </div>
