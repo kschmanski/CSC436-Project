@@ -16,6 +16,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { LoginComponent } from './login/login.component';
 import { ForumPostComponent } from './forum/forum-post/forum-post.component';
+import { TheatersComponent } from './theaters/theaters.component';
+import { AgmCoreModule } from '@agm/core';
 
 const routes: Routes = [
   {path: 'movie-detail', component: MovieDetailComponent},
@@ -25,6 +27,7 @@ const routes: Routes = [
   {path: 'favorites', component: FavoritesComponent, canActivate: [AuthGuard]},
   {path: 'home', component: HomeComponent},
   {path: 'login', component: LoginComponent},
+  {path: 'theaters', component: TheatersComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'}
 ];
 
@@ -37,7 +40,8 @@ const routes: Routes = [
     FavoritesComponent,
     HomeComponent,
     LoginComponent,
-    ForumPostComponent
+    ForumPostComponent,
+    TheatersComponent
   ],
   imports: [
     BrowserModule,
@@ -46,6 +50,9 @@ const routes: Routes = [
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAC9PRQfTqQD6F5BdlbzFRF2wnuf_WdkTM'
+    })
   ],
   providers: [InteractionService],
   bootstrap: [AppComponent]
