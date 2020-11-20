@@ -1,0 +1,86 @@
+<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+<div class="container">
+
+<div class="row" style="margin:auto;display: flex;justify-content: center;">
+
+    <div class="col-xs-12 col-md-6" >
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h3 class="panel-title">Search Friends</h3>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" placeholder="What Email do them used for Movella?" #email require>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label class="col-sm-2 col-form-label">NickName:</label>
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" placeholder="Give them a nickname!" #nickname require>
+                </div>
+              </div>
+              <button type="submit" (click)="addNewFriend(email.value,nickname.value)" class="btn btn-primary mb-2">Add Friends</button>
+          </div>
+          
+    </div>
+    <div class="col-xs-12 col-md-6" >
+        <div class="panel panel-default">
+            <div class="panel-heading">
+              <h3 class="panel-title">Your Friend List</h3>
+            </div>
+            <div class="panel-body"style="background-color: lightgrey;">
+              
+                <div *ngFor="let x of friendList; let index = index;" class="list-group">
+                    <li class="list-group-item">
+                        
+                        <h3 >{{x.nickName}}<a (click)="deleteFriend(x)"><i style="float: right;"class="far fa-trash-alt"></i></a></h3>
+                        <h6> <a href="#" data-target="#modal" data-toggle="modal"  style="float: right">See His/Her favorites!</a></h6>
+                        <h4><p style="float: left;color: rgb(220,220,220);">{{x.email}}</p> </h4>
+                      </li>
+             
+               
+                  </div>
+            </div>
+            <div class="modal fade" id="modal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="postModalLabel">His/Her Favorite List Beta</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        
+                         <p style="color: red;">Notice! This feature is under construction! Since we need well-designed database to perfectly run personal favorite list, showing hard-coded list is about all we can do for now.</p>
+                         <h6>Click on the links! Maybe you two have same taste!</h6>
+                         <div class="form-group">
+                            <div class="list-group">
+                                <a  target="_blank" href="movie-detail" (click)="redirectToDetail(fav1.text)" class="list-group-item" #fav1>The Queen's Gambit</a>
+                                <a  target="_blank" href="movie-detail" (click)="redirectToDetail(fav2.text)" class="list-group-item" #fav2>The Mandalorian</a>
+                                <a  target="_blank" href="movie-detail" (click)="redirectToDetail(fav3.text)" class="list-group-item" #fav3>The Umbrella Academy</a>
+                                <a target="_blank" href="movie-detail" (click)="redirectToDetail(fav4.text)" class="list-group-item" #fav4>The Witcher</a>
+                                <a target="_blank" href="movie-detail" (click)="redirectToDetail(fav5.text)" class="list-group-item" #fav5>Wonder Woman 1984</a>
+                              </div>
+                        </div>
+                        <div class="form-group">
+                         
+                        
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                    
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+    </div>
+</div>
+
+</div>
+
+  
