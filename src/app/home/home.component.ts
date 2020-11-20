@@ -50,6 +50,14 @@ export class HomeComponent implements OnInit {
                             'Harry Potter and the Sorcerer\'s Stone'
                           ];
 
+  group_members: Array<string> = [
+    'Afia Ekra',
+    'Michael Guzman',
+    'Edward Lin',
+    'Kaz Schmanski',
+    'Afrim Zenuni'
+  ];
+
   constructor(private http: HttpClient, private _interactionService: InteractionService) { }
 
   ngOnInit() {
