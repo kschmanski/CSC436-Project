@@ -63,8 +63,22 @@
 
         <div class="container" style=" padding-top: 2%; padding: 3%;">
             <div class="row">
-                <div class="col border bg-light d-flex justify-content-center align-items-center">
-                    Username
+                <div class="col bg-light">
+                    <div class="row bg-light border" style="height:33%">
+                        <div class="col d-flex justify-content-center">
+                            {{x.username}}
+                        </div>
+                    </div>
+                    <div class="row bg-light border" style="height: 33%;">
+                        <div class="col d-flex justify-content-center">
+                            {{x.commentsNum}} Comments
+                        </div>
+                    </div>
+                    <div class="row bg-light border" style="height: 33%;">
+                        <div class="col d-flex justify-content-center">
+                            {{x.views}} Views
+                        </div>
+                    </div>
                 </div>
                 <div class="col-7 bg-light">
                     <div class="row">
@@ -79,22 +93,15 @@
                     </div>
                 </div>
                 <div class="col bg-light">
-                    <div class="row bg-light border" style="height:33%">
-                        <div class="col d-flex justify-content-center">
-                            {{x.commentsNum}} Comments
-                        </div>
-                    </div>
-                    <div class="row bg-light border" style="height: 33%;">
-                        <div class="col d-flex justify-content-center">
-                            {{x.views}} Views
-                        </div>
-                    </div>
-                    <div class="row bg-light border" style="height: 33%;">
-                        <div class="col d-flex justify-content-center">
-                            {{x.createdDate.toLocaleString()}}
-                        </div>
-                    </div>
-                </div>
+                  <div class="row bg-light border">
+                      <button (click)='deletePost(index)' type="button" class="btn btn-outline-danger btn-block">Delete</button>
+                  </div>
+                  <div class="row bg-light border">
+                      <div class="col d-flex justify-content-center" style="height:50%">
+                          {{x.createdDate.toLocaleString()}}
+                      </div>
+                  </div>
+              </div>
             </div>
         </div>
     </div>

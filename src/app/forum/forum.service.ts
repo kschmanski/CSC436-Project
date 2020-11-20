@@ -18,7 +18,7 @@ export class ForumService {
   }
 
   deletePost(index: number){
-    // do I want to delete posts?
+    this.posts.splice(index,1);
   }
 
   getPostList(): Observable<Post[]> {
@@ -29,6 +29,10 @@ export class ForumService {
 
   setPost(post){
     this.currentPost = post;
+  }
+
+  getPostIndex(post: Post): number{
+    return this.posts.indexOf(post);
   }
 
   getPost(): Observable<Post> {

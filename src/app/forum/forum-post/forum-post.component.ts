@@ -38,6 +38,15 @@ export class ForumPostComponent implements OnInit {
     this.forumPost.commentsNum++;
   }
 
+  public deleteComment(index : number){
+    this.forumPost.comments.splice(index,1);
+    this.forumPost.commentsNum--;
+  }
+
+  public deletePost(){
+    this.service.deletePost(this.service.getPostIndex(this.forumPost));
+  }
+
   public newComment;
 
 
