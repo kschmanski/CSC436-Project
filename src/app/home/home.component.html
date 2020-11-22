@@ -10,7 +10,7 @@
         <input class="form-control form-control-lg w-75" [(ngModel)]="sQFromUser" name ="sQFromUser" placeholder="Search for a Movie"
             aria-label="Search">
         <!--<button class="btn btn-primary ml-3 btn-lg" role="button">Search</button>-->
-        <a href="search-movie" (click)="onSubmit(searchForm)" class="btn btn-primary ml-3 btn-lg">Search</a>
+        <a [routerLink]="['/search-movie']" (click)="onSubmit(searchForm)" class="btn btn-primary ml-3 btn-lg">Search</a>
       </form>
     </div>
   </div>
@@ -28,7 +28,7 @@
 
       <div class="list-group">
         <div class="suggestions" *ngFor="let movie of suggestions">
-          <a style="cursor:pointer" href="movie-detail" (click)="redirectToDetail(movie.title)" class="list-group-item list-group-item-action flex-column align-items-start">
+          <a style="cursor:pointer" [routerLink]="['/movie-detail']" (click)="redirectToDetail(movie.title)" class="list-group-item list-group-item-action flex-column align-items-start">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-2 h4">{{movie.title}}</h5>
               <small>{{movie.year}}</small>
@@ -40,37 +40,15 @@
       </div>
     </div>
 
-
     <div class="col-md-4">
       <h3>Forum Topics</h3>
-      <div class="list-group">
-        <a href="forum" class="list-group-item list-group-item-action flex-column align-items-start">
+      <div *ngFor="let post of forumPost;" class="list-group">
+        <a (click)="this._forumService.setPost(post)" [routerLink]="['/post']" class="list-group-item list-group-item-action flex-column align-items-start">
           <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-2 h4">Topic 1</h5>
-            <small>Today</small>
+            <h5 class="mb-2 h4">{{post.title}}</h5>
+            <small>{{post.createdDate.toLocaleDateString()}}</small>
           </div>
-          <p class="mb-2 h6">#threads/responses</p>
-        </a>
-        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-2 h4">Topic 2</h5>
-            <small class="text-muted">1 days ago</small>
-          </div>
-          <p class="mb-2 h6">#threads/responses</p>
-        </a>
-        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-2 h4">Topic 3</h5>
-            <small class="text-muted">3 days ago</small>
-          </div>
-          <p class="mb-2 h6">#threads/responses</p>
-        </a>
-        <a href="#!" class="list-group-item list-group-item-action flex-column align-items-start">
-          <div class="d-flex w-100 justify-content-between">
-            <h5 class="mb-2 h4">Topic 4</h5>
-            <small class="text-muted">3 days ago</small>
-          </div>
-          <p class="mb-2 h6">#threads/responses</p>
+          <p class="mb-2 h6">{{post.commentsNum}} Comments</p>
         </a>
       </div>
     </div>
@@ -87,7 +65,7 @@
           <!-- Text -->
           <p class="card-text">Will Hunting, a janitor at M.I.T., has a gift for mathematics, but needs help from a psychologist to find direction in his life..</p>
           <!-- Button -->
-          <a href="movie-detail" class="btn btn-primary" (click)="redirectToDetail('good will hunting')">Details</a>
+          <a [routerLink]="['/movie-detail']" class="btn btn-primary" (click)="redirectToDetail('good will hunting')">Details</a>
         </div>
       </div>
 
