@@ -52,7 +52,7 @@ export class ForumPageComponent implements OnInit {
   }
 
   public sendPost(post : Post){
-    post.views++;
+    // post.views++;
     this.service.setPost(post);
   }
 

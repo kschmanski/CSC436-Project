@@ -7,6 +7,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import {AppComponent} from '../app.component';
 import {SearchQuery} from '../movie-search/movie-search.component';
+import {ForumService} from '../forum/forum.service';
+import {Post} from '../forum/forum-page/forum-page.component'
 
 export class SQ {
   //the string the user passed in from the search bar
@@ -43,6 +45,7 @@ export class HomeComponent implements OnInit {
   public sQFromUser: string = '';
   model = new SQ();
   suggestions = [];
+  forumPost : Post[];
   titles: Array<string> = [ 'Inception',
                             'Happy Gilmore',
                             'The Terminator',
@@ -58,7 +61,9 @@ export class HomeComponent implements OnInit {
     'Afrim Zenuni'
   ];
 
-  constructor(private http: HttpClient, private _interactionService: InteractionService) { }
+  constructor(private http: HttpClient, private _interactionService: InteractionService, private _forumService : ForumService) { 
+    this.forumPost = _forumService.getFivePost();
+  }
 
   ngOnInit() {
     for (let i=0; i < this.titles.length; i++){

@@ -27,7 +27,16 @@ export class ForumService {
     // return this.posts;
   }
 
+  // returns first 5 posts or all posts if less than 5
+  getFivePost(): Post[] {
+    if(this.posts.length <= 5){
+      return this.posts;
+    }
+    return this.posts.slice(0,5);
+  }
+
   setPost(post){
+    post.views++;
     this.currentPost = post;
   }
 
