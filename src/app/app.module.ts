@@ -19,6 +19,7 @@ import { ForumPostComponent } from './forum/forum-post/forum-post.component';
 import { TheatersComponent } from './theaters/theaters.component';
 import { AgmCoreModule } from '@agm/core';
 import { FriendsComponent } from './friends/friends.component';
+import { TriviaComponent } from './trivia/trivia.component';
 
 const routes: Routes = [
   {path: 'movie-detail', component: MovieDetailComponent},
@@ -30,7 +31,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'theaters', component: TheatersComponent},
   {path: '', pathMatch: 'full', redirectTo: 'home'},
-  {path: 'friends', component: FriendsComponent, canActivate: [AuthGuard]}
+  {path: 'friends', component: FriendsComponent, canActivate: [AuthGuard]},
+  {path: 'trivia', component: TriviaComponent}
 ];
 
 @NgModule({
@@ -44,7 +46,8 @@ const routes: Routes = [
     LoginComponent,
     ForumPostComponent,
     TheatersComponent,
-    FriendsComponent
+    FriendsComponent,
+    TriviaComponent
   ],
   imports: [
     BrowserModule,
