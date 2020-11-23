@@ -25,11 +25,11 @@
     </form>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+<button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal">
     Get Answers
   </button>
   
-  <!-- Modal -->
+<!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -40,7 +40,8 @@
           </button>
         </div>
         <div class="modal-body" *ngFor="let q of trivia">
-          {{q.question}} <b>{{q.correct}}</b>
+          {{q.question}} <br><br>
+          <b>{{q.correct}}</b>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
